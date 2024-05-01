@@ -1,0 +1,41 @@
+/*user admin*/
+.user-admin {
+  margin-left: 15px;
+}
+
+
+table {
+  /* width: 960px; */
+  border-collapse: collapse;
+}
+
+table, tr, th, td {
+  border: solid 1px;
+  padding: 10px;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.name_width {
+  width: 180px;
+}
+
+.email-width {
+  width: 250px;
+}
+
+.tel-width {
+  width: 180px;
+}
+
+.status-width {
+  width: 50px;
+}
+
+.date {
+  width: 150px;
+}
+
+.status-false {
+  background-color: gray;
+}

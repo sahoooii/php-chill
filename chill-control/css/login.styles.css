@@ -1,0 +1,103 @@
+@import url("common.styles.css");
+
+/*login*/
+.contents-login {
+    background-image: url("../img/beach.jpeg");
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.login {
+    margin: 60px auto;
+    width: 325px;
+    height: 380px;
+    background: linear-gradient(-135deg,#C6FFDD, #FBD786, #f7797d);
+    border-radius: 4px;
+}
+
+.user-info {
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 15px;
+    padding-top: 30px;
+    padding-bottom: 0;
+}
+
+.user {
+    font-family: Quicksand;
+    outline-color: #1C74FC;
+}
+
+.btn {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
+    padding-right: 30px;
+}
+
+
+.err-msg {
+    /* color: #fff; */
+    margin-left: 15px;
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    .login {
+        width: 500px;
+        height: 550px;
+    }
+
+    .user-info {
+        font-size: 30px;
+        padding-top: 50px;
+        margin-left: 25px;
+
+    }
+
+    .user {
+        width: 450px;
+    }
+
+    .btn {
+        padding-top: 30px;
+    }
+
+    .err-msg {
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 960px) {
+    .login {
+        width: 650px;
+        height: 650px;
+    }
+
+    .user-info {
+        font-size: 40px;
+        padding-top: 70px;
+        margin-left: 35px;
+    }
+
+    .user {
+        width: 550px;
+        font-size: 30px;
+    }
+
+    .btn {
+        padding-right: 55px;
+    }
+
+    .err-msg {
+        margin-left: 35px;
+    }
+
+
+
+
+}
