@@ -1,0 +1,6 @@
+{
+    "name": "sahoooii/chill_copy",
+    "require": {
+        "vlucas/phpdotenv": "^5.3"
+    }
+}

@@ -1,0 +1,163 @@
+@import url('common.styles.css');
+
+/*contents*/
+.contents {
+	background-image: url('../img/beach.jpeg');
+	/* height: 100%; */
+	width: 100%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	padding-top: 50px;
+	padding-bottom: 80px;
+	overflow: hidden;
+}
+
+.container {
+	margin: 0 auto;
+	width: 325px;
+	height: 800px;
+	background: linear-gradient(-135deg, #c6ffdd, #fbd786, #f7797d);
+	padding-top: 20px;
+}
+
+.contents h3 {
+	font-size: 35px;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.edit {
+	width: 325px;
+}
+
+.icon {
+	width: 325px;
+	display: flex;
+	justify-content: center;
+}
+
+.item-img {
+	width: 120px;
+	height: auto;
+	max-height: 150px;
+	border-radius: 50%;
+	margin: 20px 0;
+}
+
+.user {
+	font-weight: bold;
+	font-size: 18px;
+	width: 325px;
+	display: flex;
+	justify-content: center;
+}
+
+.user_info {
+	font-family: Quicksand;
+	width: 270px;
+	outline-color: #1c74fc;
+}
+
+.img_font {
+	font-size: 14px;
+	width: 270px;
+}
+
+.privacy {
+	margin-top: 10px;
+	margin-left: -15px;
+	width: 270px;
+}
+
+.btn {
+	width: 325px;
+	display: flex;
+	justify-content: flex-end;
+	padding-right: 15px;
+}
+
+.err_msg {
+	font-weight: bold;
+	text-align: center;
+	color: red;
+	margin-top: 15px;
+	/* margin-left: 25px; */
+}
+
+/* .success-msg {
+	font-weight: bold;
+	text-align: center;
+	color: blue;
+	margin-top: 15px;
+} */
+.success-msg {
+	font-size: 22px;
+	color: #ff5f6d;
+	background: -webkit-linear-gradient(0deg, #ff5f6d, #ffc371);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	margin-top: 10px;
+	display: block;
+	text-align: center;
+}
+
+@media (min-width: 768px) {
+	.container {
+		width: 550px;
+		height: 1050px;
+	}
+
+	.contents h3 {
+		font-size: 3.5rem;
+	}
+
+	.edit {
+		width: 550px;
+	}
+
+	.icon {
+		width: 550px;
+	}
+
+	.item-img {
+		width: 150px;
+		height: auto;
+		max-height: 180px;
+		border-radius: 50%;
+		margin: 20px 0;
+	}
+
+	.user {
+		width: 550px;
+		display: flex;
+		justify-content: center;
+		margin-left: 0;
+		font-size: 2rem;
+	}
+
+	.user_info {
+		font-family: Quicksand;
+		width: 450px;
+		outline-color: #1c74fc;
+	}
+
+	.img_font {
+		font-size: 1.2rem;
+		width: 450px;
+	}
+
+	.privacy {
+		margin-left: -30px;
+		width: 450px;
+	}
+
+	.btn {
+		width: 550px;
+		padding-right: 40px;
+	}
+
+	.add {
+		font-size: 1.2rem;
+	}
+}
