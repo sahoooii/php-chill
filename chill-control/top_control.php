@@ -49,7 +49,7 @@ if ($link) {
         if (check_emp($user['user_name'])) {
             $err_msg['user_name'] = 'ユーザー名が未入力です';
         } elseif (user_check($user['user_name'])) {
-            $err_msg['user_name'] = 'ユーザー名は6文字以上の文字を入力してください';
+            $err_msg['user_name'] = 'ユーザー名は6文字以上の英語で入力してください';
         }
         $row = user_name_check($link, $user['user_name']);
         if (isset($row[0]['user_name'])) {
@@ -73,11 +73,16 @@ if ($link) {
         } elseif (email_check($user['email'])) {
             $err_msg['email'] = 'メールアドレスの入力方法が違います';
         }
+        $row = user_email_check($link, $user['email']);
+        if (isset($row[0]['email'])) {
+            $err_msg['email'] = 'emailがすでに登録されています';
+        }
 
         if (status_check($user['status'])) {
             $err_msg['status']= 'ステータスはPrivateかPublicでお願いします';
         }
 
+        // image upload
         $tempFile = $_FILES['new_img']['tmp_name'];// 一時ファイル名img upload
         $file_ext = pathinfo($_FILES['new_img']['name'], PATHINFO_EXTENSION);// ファイル拡張子を抜き出す
         $file_ext = strtolower($file_ext);// 大文字を小文字にする

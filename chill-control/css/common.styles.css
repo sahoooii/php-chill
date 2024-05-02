@@ -66,10 +66,6 @@ header {
 	margin-left: 3px;
 }
 
-a {
-	text-decoration: none;
-}
-
 /* btn */
 
 .add {
@@ -111,7 +107,19 @@ ul {
 	padding: 0;
 }
 
+/* input */
+input {
+	outline: none;
+	padding-left: 10px;
+	border-radius: 4px;
+	border: 1px solid gray;
+}
+
 /* link */
+a {
+	text-decoration: none;
+}
+
 .links {
 	margin: 0 auto;
 	padding-bottom: 20px;
