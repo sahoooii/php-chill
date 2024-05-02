@@ -1,4 +1,3 @@
-<!--chill-->
 <?php
 
 function entity_str($str)
@@ -35,12 +34,12 @@ function get_as_array($link, $sql)
 //空白チェック
 function delete_space($value)
 {
-    $value = preg_replace('/^[ 　]+/u', '', $value);
-    $value = preg_replace('/[ 　]+$/u', '', $value);
+    $value = preg_replace('/^[ ]+/u', '', $value);
+    $value = preg_replace('/[ ]+$/u', '', $value);
     return $value;
 }
 
-//空だったら
+//valueが空だったら
 function check_emp($value)
 {
     if ($value === '') {
@@ -58,22 +57,11 @@ function user_check($value)
     return true;
 }
 
-//status check
-function status_check($value)
+//同じユーザー名が存在するかcheck
+function user_name_check($link, $user_name)
 {
-    if ($value !== '0' && $value !== '1') {//非公開でも公開でもなかったらTRUE
-        return true;
-    }
-    return false;
-}
-
-//電話番号のｖチェック
-function tel_check($value)
-{
-    if (preg_match('/^(0{1}\d{1,4}-{0,1}\d{1,4}-{0,1}\d{4})$/', $value)) {//正規表現通りならFALSE
-        return false;
-    }
-    return true;
+    $query = 'SELECT user_name, user_id FROM chill_user_table WHERE user_name = "' . $user_name .'" LIMIT 1';
+    return get_as_array($link, $query);
 }
 
 //emailのチェック
@@ -85,6 +73,31 @@ function email_check($value)
     return true;
 }
 
+//同じemailが存在するかcheck
+function user_email_check($link, $email)
+{
+    $query = 'SELECT email, user_id FROM chill_user_table WHERE email = "' . $email .'" LIMIT 1';
+    return get_as_array($link, $query);
+}
+
+//電話番号のｖチェック
+function tel_check($value)
+{
+    if (preg_match('/^(0{1}\d{1,4}-{0,1}\d{1,4}-{0,1}\d{4})$/', $value)) {//正規表現通りならFALSE
+        return false;
+    }
+    return true;
+}
+
+//status check
+function status_check($value)
+{
+    if ($value !== '0' && $value !== '1') {//非公開でも公開でもなかったらTRUE
+        return true;
+    }
+    return false;
+}
+
 //img upload
 function img_up($tempFile, $file_ext, $filename, $err_msg)
 {
@@ -92,7 +105,7 @@ function img_up($tempFile, $file_ext, $filename, $err_msg)
         if ($file_ext !== "jpeg" && $file_ext !== "jpg" && $file_ext !== "png") {
             $err_msg['new_img'] = 'ファイルの形式が違います';
         }
-        if (empty($err_msg) === true) {
+        if (empty($err_msg)) {
             if (move_uploaded_file($tempFile, $filename)) {//ファイルを移動
             } else {
                 $err_msg['new_img'] = 'ファイルをアップロードできません';
@@ -100,15 +113,6 @@ function img_up($tempFile, $file_ext, $filename, $err_msg)
         }
     }
     return $err_msg;
-}
-
-
-//  register画面
-//同じユーザー名が存在するかcheck
-function user_name_check($link, $user_name)
-{
-    $query = 'SELECT user_name, user_id FROM chill_user_table WHERE user_name = "' . $user_name .'" LIMIT 1';
-    return get_as_array($link, $query);
 }
 
 function chill_user_table($link, $filename, $user)
@@ -136,7 +140,6 @@ INSERT INTO chill_user_table(
 EOT;
     return mysqli_query($link, $query);
 }
-
 
 // login情報
 //user_idがあればログイン、user_idを返す なければログイン画面

@@ -6,46 +6,89 @@
 
 <div class="contents">
 	<div class="container">
+		<!-- Register screen表示 -->
+		<?php if (count($msg) === 0) {  ?>
 		<h3>Register Here<i class="fas fa-cocktail"></i></h3>
-		<?php
-        foreach ($msg as $value) : ?>
-		<div>
-			<a href="../chill-control/login.php"
-				class="success-msg"><?php echo $value; ?>
-				<i class="far fa-comment-dots"></i></a>
-		</div>
-		<?php endforeach; ?>
-
 		<div class="register">
 			<form method="POST" action="../chill-control/top_control.php" enctype="multipart/form-data">
 				<div class="user">
 					<label>User Name: <br>
 						<input type="text" name="user_name" class="user_info"
-							value="<?php echo $user['user_name']; ?>">
+							value="<?php if (isset($user['user_name'])) : echo $user['user_name']; endif; ?>">
 					</label>
+					<!-- Error msg -->
+					<?php if (isset($err_msg['user_name'])) : ?>
+					<ul class="err-msg-container">
+						<li>
+							<p class="err-msg">
+								<?php echo $err_msg['user_name']; ?>
+							</p>
+						</li>
+					</ul>
+					<?php endif; ?>
 				</div>
 				<div class="user">
 					<label>Email: <br>
 						<input type="text" name="email" class="user_info"
-							value="<?php echo $user['email']; ?>">
+							value="<?php if (isset($user['email'])) : echo $user['email']; endif; ?>">
 					</label>
+					<!-- Error msg -->
+					<?php if (isset($err_msg['email'])) : ?>
+					<ul class="err-msg-container">
+						<li>
+							<p class="err-msg">
+								<?php echo $err_msg['email']; ?>
+							</p>
+						</li>
+					</ul>
+					<?php endif; ?>
 				</div>
 				<div class="user">
 					<label>Phone Number: <br>
 						<input type="text" name="tel" class="user_info"
-							value="<?php echo $user['tel']; ?>">
+							value="<?php if (isset($user['tel'])) : echo $user['tel']; endif; ?>">
 					</label>
+					<!-- Error msg -->
+					<?php if (isset($err_msg['tel'])) : ?>
+					<ul class="err-msg-container">
+						<li>
+							<p class="err-msg">
+								<?php echo $err_msg['tel']; ?>
+							</p>
+						</li>
+					</ul>
+					<?php endif; ?>
 				</div>
 				<div class=" user">
 					<label>Password: <br>
 						<input type="password" name="password" class="user_info"
-							value="<?php echo $user['password']; ?>">
+							value="<?php if (isset($user['password'])) : echo $user['password']; endif; ?>">
 					</label>
+					<!-- Error msg -->
+					<?php if (isset($err_msg['password'])) : ?>
+					<ul class="err-msg-container">
+						<li>
+							<p class="err-msg">
+								<?php echo $err_msg['password']; ?>
+							</p>
+						</li>
+					</ul>
+					<?php endif; ?>
 				</div>
 				<div class="user">
 					<label class="user">Icon: <br>
-						<input type="file" name="new_img" class="img_font">
+						<input type="file" name="new_img" 														accept='.png,.jpeg,.jpg' class="img_font">
 					</label>
+					<!-- Error msg -->
+					<?php if (isset($err_msg['new_img'])) : ?>
+					<ul class="err-msg-container">
+						<li>
+							<p class="err-msg">
+								<?php echo $err_msg['new_img']; ?>
+							</p>
+						</li>
+					</ul>
+					<?php endif; ?>
 				</div>
 				<div class="user">
 					<label class="user">Privacy:
@@ -61,26 +104,43 @@
 							</option>
 						</select>
 					</label>
-				</div>
-				<div class="btn">
-					<input type="submit" class="add" value="Submit">
-				</div>
-
-				<?php if (count($err_msg)) : ?>
-				<ul>
-					<?php foreach ($err_msg as $value) : ?>
-					<ul>
+					<!-- Error msg -->
+					<?php if (isset($err_msg['status'])) : ?>
+					<ul class="err-msg-container">
 						<li>
 							<p class="err-msg">
-								<?php echo $value; ?>
+								<?php echo $err_msg['status']; ?>
 							</p>
 						</li>
 					</ul>
-					<?php endforeach; ?>
-				</ul>
+					<?php endif; ?>
+				</div>
+
+				<?php if (isset($err_msg['fail'])) : ?>
+					<ul class="err-msg-container">
+						<li>
+							<p class="err-msg">
+								<?php echo $err_msg['status']; ?>
+							</p>
+						</li>
+					</ul>
 				<?php endif; ?>
+
+				<div class="btn">
+					<input type="submit" class="add" value="Submit">
+				</div>
 			</form>
 		</div>
+		<!-- success msgがあったら -->
+		<?php } else {
+		    foreach ($msg as $value) : ?>
+		<div class="success-contents">
+			<a href="../chill-control/login.php"
+				class="success-msg"><?php echo $value; ?>
+				<i class="far fa-comment-dots"></i></a>
+		</div>
+		<?php endforeach; ?>
+		<?php } ?>
 	</div>
 </div>
 
