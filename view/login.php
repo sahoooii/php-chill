@@ -14,14 +14,14 @@
     <div class="login">
         <form method="post" action="../chill-control/login_control.php">
             <div>
-                <label class="user-info">User Name:<br> <input type="text" name="user_name" class="user"
-                        value="<?php echo $user['user_name']; ?>">
+                <label class="user-info">User Email:<br> <input type="text" name="email" class="user"
+							value="<?php if (isset($user['email'])) : echo $user['email']; endif; ?>">
                 </label>
             </div>
             <div>
                 <label class="user-info">Password:<br>
                     <input type="password" name="password" class="user"
-                        value="<?php echo $user['password']; ?>">
+							value="<?php if (isset($user['password'])) : echo $user['password']; endif; ?>">
                 </label>
             </div>
             <div class="btn">

@@ -5,7 +5,7 @@ require_once '../model/model.top.php';
 require_once '../lib/mysqli.php';
 
 $err_msg = [];
-$msg = [];
+$success = false;
 $created_date = date('Y-m-d H:i:s');
 $updated_date = date('Y-m-d H:i:s');
 
@@ -91,7 +91,8 @@ if ($link) {
 
         if (empty($err_msg)) {
             if (chill_user_table($link, $filename, $user)) {
-                $msg[] = 'Welcome To Chill!!';
+                // $msg[] = 'Welcome To Chill!!';
+                $success = true;
             } else {
                 $err_msg['fail'] = '新規User情報の登録に失敗しました';
             }

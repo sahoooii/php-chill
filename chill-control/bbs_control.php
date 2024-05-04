@@ -20,7 +20,8 @@ session_start();
 
 $user_id = login_check($link);
 
-$user_name = get_user_name($link, $user_id);///user nameを取得
+// $user_name = get_user_name($link, $user_id);///user nameを取得
+$user_name = get_email($link, $user_id);///user nameを取得
 
 if ($link) {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {

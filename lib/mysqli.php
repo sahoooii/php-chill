@@ -27,8 +27,8 @@ function get_admin_connect(): array
     $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
     $dotenv->load();
 
-    $dbAdmin = $_ENV['DB_ADMIN'];
+    $dbAdminEmail = $_ENV['DB_ADMIN_EMAIL'];
     $dbAdminPass = $_ENV['DB_ADMIN_PASSWD'];
 
-    return [$dbAdmin, $dbAdminPass];
+    return [$dbAdminEmail, $dbAdminPass];
 }

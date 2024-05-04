@@ -15,9 +15,10 @@ session_start();
 
 $user_id = login_check($link);
 
-$user_name = get_user_name($link, $user_id);
+// $user_name = get_user_name($link, $user_id);
+$email = get_email($link, $user_id);
 
-if($user_name !== $admin[0]) {
+if($email !== $admin[0]) {
     header('Location: ./login-control.php');
     exit;
 }
