@@ -1,7 +1,8 @@
 <?php
 
     $user = [
-        'user_name' => '',
+        // 'user_name' => '',
+        'email' => '',
         'password' => '',
         'status' => '',
     ];

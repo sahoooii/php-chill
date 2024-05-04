@@ -7,7 +7,6 @@
 <div class="contents">
 	<div class="container">
 		<!-- Register screen表示 -->
-		<?php if (count($msg) === 0) {  ?>
 		<h3>Register Here<i class="fas fa-cocktail"></i></h3>
 		<div class="register">
 			<form method="POST" action="../chill-control/top_control.php" enctype="multipart/form-data">
@@ -77,9 +76,8 @@
 				</div>
 				<div class="user">
 					<label class="user">Icon: <br>
-						<input type="file" name="new_img" 														accept='.png,.jpeg,.jpg' class="img_font">
+						<input type="file" name="new_img" accept='.png,.jpeg,.jpg' class="img_font" required>
 					</label>
-					<!-- Error msg -->
 					<?php if (isset($err_msg['new_img'])) : ?>
 					<ul class="err-msg-container">
 						<li>
@@ -117,13 +115,13 @@
 				</div>
 
 				<?php if (isset($err_msg['fail'])) : ?>
-					<ul class="err-msg-container">
-						<li>
-							<p class="err-msg">
-								<?php echo $err_msg['status']; ?>
-							</p>
-						</li>
-					</ul>
+				<ul class="err-msg-container">
+					<li>
+						<p class="err-msg">
+							<?php echo $err_msg['status']; ?>
+						</p>
+					</li>
+				</ul>
 				<?php endif; ?>
 
 				<div class="btn">
@@ -131,16 +129,11 @@
 				</div>
 			</form>
 		</div>
-		<!-- success msgがあったら -->
-		<?php } else {
-		    foreach ($msg as $value) : ?>
-		<div class="success-contents">
-			<a href="../chill-control/login.php"
-				class="success-msg"><?php echo $value; ?>
-				<i class="far fa-comment-dots"></i></a>
-		</div>
-		<?php endforeach; ?>
-		<?php } ?>
+		<!-- Registerに成功したら -->
+		<?php if ($success) {
+		    header('Location: ./bbs_control.php');
+		    exit;
+		} ?>
 	</div>
 </div>
 
