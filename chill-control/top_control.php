@@ -91,10 +91,7 @@ if ($link) {
 
         if (empty($err_msg)) {
             if (chill_user_table($link, $filename, $user)) {
-                // $msg[] = 'Welcome To Chill!!';
                 $success = true;
-            } else {
-                $err_msg['fail'] = '新規User情報の登録に失敗しました';
             }
         }
     }

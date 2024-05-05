@@ -118,34 +118,6 @@ ul {
 	list-style: none;
 	padding-left: 0;
 }
-.success-contents {
-	height: 100vh;
-	width: 100%;
-	margin: 0 auto;
-	position: relative;
-}
-
-.success-msg {
-	color: #fff;
-	font-size: 28px;
-	width: 100%;
-	transition: all 0.3s;
-	font-weight: bold;
-	text-align: center;
-	cursor: pointer;
-	position: absolute;
-	top: 50%;
-}
-
-.success-msg:hover {
-	text-decoration: none;
-	opacity: 0.9;
-	color: #ff5f6d;
-	background: -webkit-linear-gradient(0deg, #ff5f6d, #ffc371);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	transform: scale(1.2);
-}
 
 /* footer */
 footer {
