@@ -114,24 +114,14 @@
 					<?php endif; ?>
 				</div>
 
-				<?php if (isset($err_msg['fail'])) : ?>
-				<ul class="err-msg-container">
-					<li>
-						<p class="err-msg">
-							<?php echo $err_msg['status']; ?>
-						</p>
-					</li>
-				</ul>
-				<?php endif; ?>
-
 				<div class="btn">
 					<input type="submit" class="add" value="Submit">
 				</div>
 			</form>
 		</div>
-		<!-- Registerに成功したら -->
+		<!-- Registerに成功したらLogin画面に -->
 		<?php if ($success) {
-		    header('Location: ./bbs_control.php');
+		    header('Location: ./login_control.php');
 		    exit;
 		} ?>
 	</div>
