@@ -19,7 +19,9 @@ session_start();
 $user_id = login_check($link);
 
 // $user_name = get_user_name($link, $user_id);///user nameを取得
-$email = get_email($link, $user_id);///user nameを取得
+// $email = get_email($link, $user_id);///user nameを取得
+$email = get_user($link, $user_id)['email'];
+
 
 if ($link) {
     mysqli_set_charset($link, 'UTF8');
@@ -67,7 +69,7 @@ if ($link) {
                 $err_msg['user_name'] = 'ユーザー名は6文字以上の文字を入力してください';
             }
             $row = user_name_check($link, $user['user_name']);
-            if (isset($row[0]['user_name']) === true && $row[0]['user_id'] !== $user_id) {
+            if (isset($row[0]['user_name']) && $row[0]['user_id'] !== $user_id) {
                 $err_msg['user_name'] = 'ユーザー名がすでに存在します';
             }
 
@@ -87,6 +89,10 @@ if ($link) {
                 $err_msg['email'] = 'emailが未入力です';
             } elseif (email_check($user['email'])) {
                 $err_msg['email'] = 'メールアドレスの入力方法が違います';
+            }
+            $row = user_email_check($link, $user['email']);
+            if (isset($row[0]['email']) && $row[0]['user_id'] !== $user_id) {
+                $err_msg['email'] = 'メールアドレスがすでに登録されています';
             }
 
             if (status_check($user['status'])) {
