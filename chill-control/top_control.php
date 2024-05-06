@@ -75,7 +75,7 @@ if ($link) {
         }
         $row = user_email_check($link, $user['email']);
         if (isset($row[0]['email'])) {
-            $err_msg['email'] = 'emailがすでに登録されています';
+            $err_msg['email'] = 'メールアドレスがすでに登録されています';
         }
 
         if (status_check($user['status'])) {
