@@ -60,6 +60,8 @@ html {
 	overflow: hidden;
 	width: 100%;
 	padding-top: 120px;
+	/* padding-bottom: 100px; */
+	min-height: 100vh;
 }
 
 .container {
@@ -68,6 +70,7 @@ html {
 	width: 370px;
 	display: flex;
 	margin: 0 auto;
+	/* height: 100vh; */
 }
 
 /* nav */
@@ -185,6 +188,10 @@ main {
 	margin-bottom: 10px;
 }
 
+.img-up input {
+	border-style: none;
+}
+
 .btn {
 	width: 100%;
 	display: flex;
@@ -269,6 +276,10 @@ main {
 }
 
 /*page*/
+
+/* .next {
+	padding-bottom: 100px;
+} */
 .pasination {
 	display: flex;
 	margin-top: 20px;

@@ -11,7 +11,7 @@
     ];
 
     $err_msg = [];
-    $msg = [];
+    $success = false;
 
     $title = 'Chill Register';
     $stylesheet = 'css/top.styles.css';

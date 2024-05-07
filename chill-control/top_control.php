@@ -5,7 +5,7 @@ require_once '../model/model.top.php';
 require_once '../lib/mysqli.php';
 
 $err_msg = [];
-$msg = [];
+$success = false;
 $created_date = date('Y-m-d H:i:s');
 $updated_date = date('Y-m-d H:i:s');
 
@@ -49,7 +49,7 @@ if ($link) {
         if (check_emp($user['user_name'])) {
             $err_msg['user_name'] = 'ユーザー名が未入力です';
         } elseif (user_check($user['user_name'])) {
-            $err_msg['user_name'] = 'ユーザー名は6文字以上の英語で入力してください';
+            $err_msg['user_name'] = 'ユーザー名は6文字以上の英数字で入力してください';
         }
         $row = user_name_check($link, $user['user_name']);
         if (isset($row[0]['user_name'])) {
@@ -59,7 +59,7 @@ if ($link) {
         if (check_emp($user['password'])) {
             $err_msg['password'] = 'パスワードが未入力です';
         } elseif (user_check($user['password'])) {
-            $err_msg['password'] = 'パスワードは6文字以上の文字を入力してください';
+            $err_msg['password'] = 'パスワードは6文字以上の英数字入力してください';
         }
 
         if (check_emp($user['tel'])) {
@@ -69,13 +69,13 @@ if ($link) {
         }
 
         if (check_emp($user['email'])) {
-            $err_msg['email'] = 'emailが未入力です';
+            $err_msg['email'] = 'メールアドレスが未入力です';
         } elseif (email_check($user['email'])) {
             $err_msg['email'] = 'メールアドレスの入力方法が違います';
         }
         $row = user_email_check($link, $user['email']);
         if (isset($row[0]['email'])) {
-            $err_msg['email'] = 'emailがすでに登録されています';
+            $err_msg['email'] = 'メールアドレスがすでに登録されています';
         }
 
         if (status_check($user['status'])) {
@@ -91,9 +91,7 @@ if ($link) {
 
         if (empty($err_msg)) {
             if (chill_user_table($link, $filename, $user)) {
-                $msg[] = 'Welcome To Chill!!';
-            } else {
-                $err_msg['fail'] = '新規User情報の登録に失敗しました';
+                $success = true;
             }
         }
     }
