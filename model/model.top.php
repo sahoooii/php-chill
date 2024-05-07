@@ -48,7 +48,7 @@ function check_emp($value)
     return false;
 }
 
-//user,passwordの登録ルールチェック
+//userの登録ルールチェック
 function user_check($value)
 {
     if (preg_match('/^[a-zA-Z0-9]{6,}+$/', $value)) {//正規表現通りならfalse
@@ -160,6 +160,20 @@ function get_user_name($link, $user_id)
     $query = 'SELECT user_name FROM chill_user_table WHERE user_id = ' . $user_id .'';
     $data = get_as_array($link, $query);
     return $data[0]['user_name'];
+}
+
+function get_email($link, $user_id)
+{
+    $query = 'SELECT email FROM chill_user_table WHERE user_id = ' . $user_id .'';
+    $data = get_as_array($link, $query);
+    return $data[0]['email'];
+}
+
+function get_user($link, $user_id)
+{
+    $query = 'SELECT email, user_name FROM chill_user_table WHERE user_id = ' . $user_id .'';
+    $data = get_as_array($link, $query);
+    return $data[0];
 }
 
 //user admin
