@@ -36,6 +36,7 @@
 	text-decoration: none;
 }
 
+/* Register */
 .contents {
 	position: relative;
 	z-index: 1;
@@ -86,7 +87,7 @@
 .err-msg-container {
 	width: 300px;
 	margin: 0 auto;
-	font-family: 'Lobster', cursive;
+	font-family: Quicksand;
 }
 
 .err-msg {

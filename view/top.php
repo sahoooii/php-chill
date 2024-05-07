@@ -12,7 +12,7 @@
 			<form method="POST" action="../chill-control/top_control.php" enctype="multipart/form-data">
 				<div class="user">
 					<label>User Name: <br>
-						<input type="text" name="user_name" class="user_info"
+						<input type="text" name="user_name" class="user_info" placeholder="6文字以上の英数字で入力..."
 							value="<?php if (isset($user['user_name'])) : echo $user['user_name']; endif; ?>">
 					</label>
 					<!-- Error msg -->
@@ -28,7 +28,7 @@
 				</div>
 				<div class="user">
 					<label>Email: <br>
-						<input type="text" name="email" class="user_info"
+						<input type="text" name="email" class="user_info"  placeholder="Emailを入力..."
 							value="<?php if (isset($user['email'])) : echo $user['email']; endif; ?>">
 					</label>
 					<!-- Error msg -->
@@ -44,7 +44,7 @@
 				</div>
 				<div class="user">
 					<label>Phone Number: <br>
-						<input type="text" name="tel" class="user_info"
+						<input type="text" name="tel" class="user_info"  placeholder="電話番号を入力..."
 							value="<?php if (isset($user['tel'])) : echo $user['tel']; endif; ?>">
 					</label>
 					<!-- Error msg -->
@@ -60,7 +60,7 @@
 				</div>
 				<div class=" user">
 					<label>Password: <br>
-						<input type="password" name="password" class="user_info"
+						<input type="password" name="password" class="user_info"  placeholder="6文字以上の英数字で入力..."
 							value="<?php if (isset($user['password'])) : echo $user['password']; endif; ?>">
 					</label>
 					<!-- Error msg -->
