@@ -1,14 +1,11 @@
 <?php
 
     $user = [
-        // 'user_name' => '',
         'email' => '',
         'password' => '',
-        'status' => '',
     ];
 
     $err_msg = [];
-    $msg = [];
 
     $title = 'Login';
     $stylesheet = 'css/login.styles.css';

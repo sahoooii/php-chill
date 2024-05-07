@@ -48,12 +48,21 @@
 					<?php endif; ?>
 				</div>
 
+				<!-- If not matched user info -->
+				<?php if (isset($err_msg['fail'])) : ?>
+				<ul class="err-msg-container">
+					<li>
+						<p class="err-msg">
+							<?php echo $err_msg['fail']; ?>
+						</p>
+					</li>
+				</ul>
+				<?php endif; ?>
+
 				<div class="btn">
 					<input type="submit" value="Login" class="add">
 				</div>
 			</div>
-
-
 		</form>
 	</div>
 </div>
