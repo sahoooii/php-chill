@@ -110,7 +110,6 @@ ul {
 /* input */
 input {
 	outline: none;
-	/* padding-left: 10px; */
 	padding: 2px 2px 2px 10px;
 	border-radius: 4px;
 	border: 1px solid gray;
@@ -118,6 +117,7 @@ input {
 
 input::placeholder {
 	font-size: 12px;
+	vertical-align: middle;
 }
 
 /* link */
@@ -178,6 +178,6 @@ a {
 	}
 
 	input::placeholder {
-		font-size: 16px;
+		font-size: 18px;
 	}
 }

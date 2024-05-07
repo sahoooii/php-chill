@@ -115,6 +115,7 @@ function img_up($tempFile, $file_ext, $filename, $err_msg)
     return $err_msg;
 }
 
+// Register登録
 function chill_user_table($link, $filename, $user)
 {
     $query = <<<EOT
@@ -141,11 +142,11 @@ EOT;
     return mysqli_query($link, $query);
 }
 
-// login情報
+// Login section
 //user_idがあればログイン、user_idを返す なければログイン画面
-function login_check($link)
+function login_check()
 {
-    if (isset($_SESSION['user_id']) === true) {
+    if (isset($_SESSION['user_id'])) {
         $user_id =  $_SESSION['user_id'];
         return $user_id;
     } else {
