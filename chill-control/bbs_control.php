@@ -13,9 +13,6 @@ $updated_date = date('Y-m-d H:i:s');
 $comment = '';
 $page =1;
 
-//
-$users = [];
-
 $link = get_db_connect();// DB接続
 
 // セッション開始

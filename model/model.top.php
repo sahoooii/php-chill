@@ -48,7 +48,7 @@ function check_emp($value)
     return false;
 }
 
-//user,passwordの登録ルールチェック
+//userの登録ルールチェック
 function user_check($value)
 {
     if (preg_match('/^[a-zA-Z0-9]{6,}+$/', $value)) {//正規表現通りならfalse

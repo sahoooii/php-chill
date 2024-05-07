@@ -21,9 +21,6 @@ if (isset($_SESSION['user_id']) === true) {   // ログイン済みの場合、�
 if ($link) {
     mysqli_set_charset($link, 'UTF8');
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // if (isset($_POST['user_name'])) {
-        //     $user_name = $_POST['user_name'];
-        // }
         if (isset($_POST['email'])) {
             $email = $_POST['email'];
         }
@@ -31,20 +28,19 @@ if ($link) {
             $password = $_POST['password'];
         }
         if (check_emp($email)) {
-            $err_msg[] = 'emailが未入力です';
+            $err_msg['email'] = 'メールアドレスが未入力です';
         }
         if (check_emp($password)) {
-            $err_msg[] = 'パスワードが未入力です';
+            $err_msg['password'] = 'パスワードが未入力です';
         }
 
         $user = [
-            // 'user_name' => $user_name,
             'email' => $email,
             'password' => $password,
         ];
 
-        if (empty($err_msg) === true) {
-            // user nameとパスワードからuser_idを取得するSQL
+        if (empty($err_msg)) {
+            // emailとpasswordからuser_idを取得するSQL
             // $sql = 'SELECT user_id FROM chill_user_table WHERE user_name = "' . $user_name .'" AND password = "' . $password .'"';
             $sql = 'SELECT user_id FROM chill_user_table WHERE email = "' . $email .'" AND password = "' . $password .'"';
             // SQL実行し登録データを配列で取得
