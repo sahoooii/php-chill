@@ -2,29 +2,39 @@
 
 body,
 html {
-	/*font-family: Quicksand;*/
 	font-family: sans-serif;
 }
 
 /*header*/
-
 .navbar {
 	padding: 0;
 	height: 150px;
+	justify-content: center;
+}
+.navbar-brand {
+	padding: 0;
 }
 
 .header-title h2 {
 	font-family: 'Lobster', cursive;
-	/* margin-left: -40px; */
 	font-size: 50px;
 }
 
 .navbar-light .navbar-nav .nav-link {
-	color: #fff;
+	color: gray;
 }
 
-.navbar-nav {
-	padding-left: 10px;
+.nav-items {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	padding-top: 7px;
+}
+
+.user-items {
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
 }
 
 .navbar-light .navbar-toggler {
@@ -32,19 +42,16 @@ html {
 	outline: none;
 }
 
-.navbar-toggler-icon {
-	margin-right: 20px;
-}
-
 .nav-item {
 	font-weight: bold;
-	font-size: 18px;
+	font-size: 16px;
 	font-family: sans-serif;
 }
 
 .nav-item a {
 	text-decoration: none;
 	cursor: pointer;
+	transition: all 0.3s ease 0s;
 }
 
 .nav-item a:hover {
@@ -52,6 +59,7 @@ html {
 	background: -webkit-linear-gradient(0deg, #ff5f6d, #ffc371);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
+	transform: scale(1.1);
 }
 
 /*contents*/
@@ -59,111 +67,58 @@ html {
 	background: linear-gradient(-135deg, #c6ffdd, #fbd786, #f7797d);
 	overflow: hidden;
 	width: 100%;
-	padding-top: 120px;
-	/* padding-bottom: 100px; */
+	padding-top: 80px;
 	min-height: 100vh;
 }
 
 .container {
-	/* width: 500px; */
-	/* width: 600px; */
-	width: 370px;
 	display: flex;
+	justify-content: center;
 	margin: 0 auto;
-	/* height: 100vh; */
-}
-
-/* nav */
-.nav {
-	background-color: #fff;
-	width: 250px;
-	height: 420px;
-	border-radius: 4px;
-	margin: 11px 30px 0 0;
-	display: none;
-}
-
-.nav ul {
-	list-style: none;
-	text-align: center;
-	padding: 0;
-}
-
-.profile-title {
-	font-size: 30px;
-	/* background-color: yellow; */
-	font-weight: bold;
-	margin-top: 35px;
-}
-
-.icon-profile {
-	width: 150px;
-	max-height: 200px;
-	height: auto;
-	border-radius: 50%;
-	margin-top: 10px;
-	margin-bottom: 20px;
-	transition: all 0.3s;
-}
-
-.icon-profile:hover {
-	opacity: 0.7;
-}
-
-.nav-username > a {
-	color: black;
-	text-decoration: none;
-	transition: all 0.3s;
-	cursor: pointer;
-}
-
-.nav-username > a:hover {
-	opacity: 0.7;
-}
-
-.nav-username span {
-	font-size: 22px;
-	color: #ff5f6d;
-	background: -webkit-linear-gradient(0deg, #ff5f6d, #ffc371);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	font-weight: bold;
+	width: 90%;
 }
 
 /* main contents */
 main {
-	width: 100%;
+	align-items: center;
 }
 
-/* .text {
-    padding: 0;
-    width: 350px;
-    margin: 0 auto;
-} */
+.text {
+	padding: 0;
+	margin: 15px auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+textarea {
+	box-sizing: border-box;
+}
+
+textarea::placeholder {
+	font-size: 16px;
+}
 
 .icon {
 	width: 70px;
-	height: auto;
-	max-height: 90px;
+	height: 70px;
 	border-radius: 50%;
-	/* margin-top: 12px; */
+	object-fit: cover;
+}
+
+.avatar-icon {
+	display: none;
 }
 
 .comment {
-	margin: 15px auto;
-	padding: 5px 15px;
+	padding: 5px 10px;
 	width: 340px;
 	height: 150px;
 	border-radius: 4px;
-	border-color: #c4ccc4;
 	outline: none;
 	font-size: 20px;
-	text-align: left;
-}
-
-.comment::placeholder {
-	padding-top: 5px;
-	padding-left: 15px;
+	border: solid #c4ccc4 1px;
+	box-sizing: border-box;
 }
 
 .msg {
@@ -171,21 +126,27 @@ main {
 	font-size: 1.1rem;
 }
 
-.err-msg {
-	margin-top: -40px;
-	margin-bottom: 30px;
-	font-size: 1.1rem;
+.err-msg-container {
+	margin: 0 auto;
+	font-family: Quicksand;
+	text-align: start;
+	width: 90%;
 }
 
-.fa-images {
-	color: blue;
-	font-weight: bold;
-	/* display: block; */
+.err-msg {
+	padding-top: 10px;
+	font-size: 14px;
 }
 
 .img-up {
-	/* float: left; */
-	margin-bottom: 10px;
+	width: 90%;
+	margin: 0 auto;
+	padding-bottom: 10px;
+	/* margin-bottom: 10px; */
+}
+
+.img-up input {
+	padding: 0;
 }
 
 .img-up input {
@@ -194,8 +155,15 @@ main {
 
 .btn {
 	width: 100%;
-	display: flex;
-	justify-content: flex-end;
+	margin-bottom: 10px;
+}
+
+.result {
+	width: 90%;
+	margin: 0 auto;
+	padding-bottom: 10px;
+	/* text-align: start; */
+	font-size: 16px;
 }
 
 .comment-all {
@@ -203,7 +171,6 @@ main {
 	height: 100%;
 	margin: 0 auto;
 	padding-top: 10px;
-	/* padding-left: 12px; */
 	background-color: #fff;
 	position: relative;
 	font-size: 16px;
@@ -248,18 +215,15 @@ main {
 .btn-del {
 	cursor: pointer;
 	font-size: 15px;
-	/* margin-right: 20px;
-    margin-bottom: 10px; */
 	margin: 10px 5px;
 	position: absolute;
 	right: 0;
 	bottom: 0;
 	border: none;
-	/* font-size: 1.1em; */
-	width: 45px;
+	width: 35px;
+	height: 30px;
 	background-color: red;
 	color: #fff;
-	/* border-radius: 50%; */
 	border-radius: 4px;
 	padding: 6px 0px;
 	outline: none;
@@ -319,40 +283,70 @@ main {
 	}
 
 	.navbar-expand-md .navbar-nav {
-		/* -ms-flex-direction: row; */
 		flex-direction: column;
 	}
 
-	.nav-item a {
-		display: inline-block;
-		transition: all 0.3s ease 0s;
-	}
-
-	.nav-item a:hover {
-		transform: scale(1.2);
+	.navbar-light .navbar-nav .nav-link {
+		color: white;
 	}
 
 	/* contents */
 	.contents {
-		padding-top: 50px;
+		padding-top: 20px;
 	}
 
 	.container {
-		width: 700px;
-		padding: 0px;
+		width: 80%;
 	}
 
 	.comment {
 		width: 470px;
 		height: 200px;
-		margin: 30px 10px;
 	}
 
-	.nav {
+	textarea::placeholder {
+		padding-top: 5px;
+		padding-left: 8px;
+		font-size: 18px;
+	}
+
+	.img-up {
+		margin: 0;
+		padding-bottom: 15px;
+	}
+
+	.img-up input {
+		padding: 0;
+	}
+
+	.err-msg-container {
+		margin: 0;
+		width: 80%;
+	}
+
+	.nav-items {
+		display: flex;
+		flex-direction: column;
+		padding-top: 0;
+	}
+
+	.icon {
+		display: none;
+	}
+
+	.avatar-icon {
 		display: block;
+		width: 70px;
+		height: 70px;
+		border-radius: 50%;
+		object-fit: cover;
 	}
 
 	.result {
+		width: 80%;
+		margin: 0;
+		padding-bottom: 15px;
+		/* text-align: start; */
 		font-size: 1.2rem;
 	}
 
@@ -371,33 +365,15 @@ main {
 }
 
 @media (min-width: 960px) {
-	.container {
-		width: 960px;
-	}
-
-	.nav {
-		width: 300px;
-		height: 500px;
-	}
-
-	.icon-profile {
-		width: 200px;
-		max-height: 250px;
-	}
-
-	.nav-username > a {
-		font-size: 1.2rem;
-	}
-
 	.comment {
 		width: 550px;
 		height: 200px;
-		margin: 30px 10px;
+		/* margin: 30px 10px; */
 	}
 
 	.btn {
-		width: 550px;
 		padding: 0;
+		margin-bottom: 20px;
 	}
 
 	.comment-all {
@@ -408,5 +384,9 @@ main {
 @media (min-width: 992px) {
 	.comment-all {
 		margin-left: 0;
+	}
+
+	.nav-item {
+		font-size: 18px;
 	}
 }
