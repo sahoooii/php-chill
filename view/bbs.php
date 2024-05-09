@@ -70,8 +70,9 @@
 			</form>
 
 			<p class="result">
-				Tweets<?php echo count($result_data); ?>件
+				<span><?php echo count($result_data); ?></span>tweets
 			</p>
+
 			<?php foreach ($data as $value) : ?>
 			<form method="post" class="delete_form">
 				<div class="comment-all">
@@ -93,6 +94,7 @@
 								class="img-size">
 							<?php endif; ?>
 						</div>
+						<!-- Delete Button -->
 						<?php if ($value['user_id'] === $user_id) : ?>
 							<input type="submit" value="&#xf2ed;" class="btn-del fas">
 							<input type="hidden" name="comment_id"
@@ -104,7 +106,7 @@
 			</form>
 			<?php endforeach; ?>
 
-			<div class="pasination">
+			<div class="pagination">
 				<?php if ($page > 1) : ?>
 				<div class="back">
 					<a class="page"
