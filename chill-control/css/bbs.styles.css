@@ -166,6 +166,10 @@ textarea::placeholder {
 	font-size: 16px;
 }
 
+.result span {
+	font-weight: bold;
+}
+
 .comment-all {
 	width: 340px;
 	height: 100%;
@@ -188,7 +192,7 @@ textarea::placeholder {
 
 .date {
 	font-size: 12px;
-	padding-left: 10px;
+	padding-left: 12px;
 	color: #747474;
 }
 
@@ -197,33 +201,30 @@ textarea::placeholder {
 	padding-left: 14px;
 	padding-bottom: 5px;
 	font-size: 20px;
-	/*position: relative;*/
 }
 
 .img-size {
 	max-width: 300px;
 	width: auto;
-	max-height: 370px;
 	height: auto;
-	padding: 15px 0;
-	/*float: left;*/
-	/*position: absolute;*/
-	/*right: 0;*/
-	/*bottom: 0;*/
+	max-height: 370px;
+	padding: 15px 0 30px 0;
+	object-fit: cover;
+	/* marfgin-bottom: 20px; */
 }
 
+/* Deelete Button */
 .btn-del {
 	cursor: pointer;
-	font-size: 15px;
-	margin: 10px 5px;
+	font-size: 18px;
 	position: absolute;
-	right: 0;
-	bottom: 0;
+	right: 5px;
+	bottom: 3px;
 	border: none;
 	width: 35px;
 	height: 30px;
-	background-color: red;
-	color: #fff;
+	background-color: transparent;
+	color: red;
 	border-radius: 4px;
 	padding: 6px 0px;
 	outline: none;
@@ -240,11 +241,10 @@ textarea::placeholder {
 }
 
 /*page*/
-
 /* .next {
 	padding-bottom: 100px;
 } */
-.pasination {
+.pagination {
 	display: flex;
 	margin-top: 20px;
 	margin-bottom: 100px;
@@ -252,7 +252,7 @@ textarea::placeholder {
 
 .fa-backward:before {
 	margin-left: 5px;
-	margin-right: 10px;
+	/* margin-right: 10px; */
 }
 
 .fa-forward:before {
@@ -265,7 +265,6 @@ textarea::placeholder {
 	font-size: 18px;
 	font-weight: bold;
 	padding-left: 10px;
-	/* transition: all 0.3s; */
 	display: inline-block;
 	transition: all 0.3s ease 0s;
 }
@@ -274,7 +273,7 @@ textarea::placeholder {
 	opacity: 0.7;
 	text-decoration: none;
 	color: #fff;
-	transform: scale(1.2);
+	transform: scale(1.1);
 }
 
 @media (min-width: 768px) {
@@ -346,13 +345,11 @@ textarea::placeholder {
 		width: 80%;
 		margin: 0;
 		padding-bottom: 15px;
-		/* text-align: start; */
 		font-size: 1.2rem;
 	}
 
 	.comment-all {
 		width: 470px;
-		/* font-size: 1.2rem; */
 	}
 
 	.name {
@@ -362,13 +359,21 @@ textarea::placeholder {
 	.comment-text {
 		font-size: 1.5rem;
 	}
+
+	.img-size {
+		padding: 15px 0;
+	}
+
+	.btn-del {
+		right: 5px;
+		bottom: 10px;
+	}
 }
 
 @media (min-width: 960px) {
 	.comment {
 		width: 550px;
 		height: 200px;
-		/* margin: 30px 10px; */
 	}
 
 	.btn {
@@ -378,6 +383,11 @@ textarea::placeholder {
 
 	.comment-all {
 		width: 550px;
+	}
+
+	/* pagination */
+	.page {
+		padding-left: 0;
 	}
 }
 
