@@ -38,28 +38,17 @@ function delete_chill_table($link, $user_id, $comment_id)
 }
 
 //paging
+//LIMITなし全件取得
 function paging($link, $user_id)
 {
-    $query = 'SELECT chill_bbs_table.comment_id, chill_bbs_table.user_id, chill_bbs_table.user_name, chill_bbs_table.comment, chill_bbs_table.img, chill_bbs_table.date, chill_user_table.status FROM chill_bbs_table LEFT JOIN chill_user_table ON chill_bbs_table.user_id = chill_user_table.user_id WHERE status= 1 OR chill_user_table.user_id=' . $user_id .'';//LIMITなし全件取得
+    $query = 'SELECT chill_bbs_table.comment_id, chill_bbs_table.user_id, chill_bbs_table.user_name, chill_bbs_table.comment, chill_bbs_table.img, chill_bbs_table.date, chill_user_table.status, chill_user_table.img as iconImg FROM chill_bbs_table LEFT JOIN chill_user_table ON chill_bbs_table.user_id = chill_user_table.user_id WHERE status= 1 OR chill_user_table.user_id=' . $user_id .'';
     $result = mysqli_query($link, $query);
     return $result;
 }
 
 function get_chill_table($link, $user_id, $start)
 {
-    $sql = 'SELECT chill_bbs_table.comment_id, chill_bbs_table.user_id, chill_bbs_table.user_name, chill_bbs_table.comment, chill_bbs_table.img, chill_bbs_table.date, chill_user_table.status FROM chill_bbs_table LEFT JOIN chill_user_table ON chill_bbs_table.user_id = chill_user_table.user_id WHERE status= 1 OR chill_user_table.user_id=' . $user_id .' ORDER BY date DESC LIMIT ' . $start . ',5';
-    // $sql =<<<EOT
-    // SELECT chill_bbs_table.comment_id,
-    // chill_bbs_table.user_id,
-    // chill_bbs_table.user_name,
-    // chill_bbs_table.comment,
-    // chill_bbs_table.img,
-    // chill_bbs_table.date,
-    // chill_user_table.status
-    // FROM chill_bbs_table LEFT JOIN
-    // chill_user_table ON
-    // chill_bbs_table.user_id = chill_user_table.user_id
-    // WHERE status= 1 OR chill_user_table.user_id="{$user_id}" ORDER BY date DESC LIMIT ' . $start . ',5';
+    $sql = 'SELECT chill_bbs_table.comment_id, chill_bbs_table.user_id, chill_bbs_table.user_name, chill_bbs_table.comment, chill_bbs_table.img, chill_bbs_table.date, chill_user_table.status, chill_user_table.img as iconImg FROM chill_bbs_table LEFT JOIN chill_user_table ON chill_bbs_table.user_id = chill_user_table.user_id WHERE status= 1 OR chill_user_table.user_id=' . $user_id .' ORDER BY date DESC LIMIT ' . $start . ',5';
     return get_as_array($link, $sql);
 }
 
