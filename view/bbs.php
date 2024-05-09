@@ -49,7 +49,7 @@
 				</div>
 				<div class="img-up">
 					<!-- <i class="far fa-images"></i> -->
-					<input type="file" name="new_img" value="">
+					<input type="file" name="new_img" value="" accept='.png,.jpeg,.jpg'>
 				</div>
 
 				<?php foreach ($err_msg as $value) : ?>
@@ -77,9 +77,12 @@
 			<form method="post" class="delete_form">
 				<div class="comment-all">
 					<div>
-						<span class="name">
-							<?php echo $value['user_name']; ?>
-						</span><br>
+						<div class="user">
+							<img class="user_icon" src="<?php echo $value['iconImg'];?>">
+							<span class="name">
+								<?php echo $value['user_name']; ?>
+							</span>
+						</div>
 						<span
 							class="date"><?php echo $value['date']; ?>
 						</span>
@@ -133,7 +136,7 @@
 
 	$(function() {
 		$('.delete_form').submit(function() {
-			return confirm("Do you really want to delete?");
+			return confirm("Would you like to delete this tweet?");
 		});
 	});
 </script>
