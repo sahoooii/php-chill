@@ -180,19 +180,33 @@ textarea::placeholder {
 	font-size: 16px;
 }
 
+.user {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-left: 12px;
+	margin-bottom: 5px;
+}
+
+.user_icon {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
 .name {
 	color: #ff5f6d;
 	background: -webkit-linear-gradient(0deg, #ff5f6d, #ffc371);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	font-weight: bold;
-	padding-left: 12px;
 	text-decoration: none;
 }
 
 .date {
 	font-size: 12px;
-	padding-left: 12px;
+	padding-left: 14px;
 	color: #747474;
 }
 

@@ -20,17 +20,12 @@ session_start();
 
 $user_id = login_check($link);
 
-// $user_name = get_user_name($link, $user_id);///user nameを取得
-// $email = get_email($link, $user_id);///user nameを取得
-
 $user_name = get_user($link, $user_id)['user_name'];
 $email = get_user($link, $user_id)['email'];
 
-// var_dump($email);
-
 if ($link) {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        if (isset($_POST['sql_kind']) === true) {
+        if (isset($_POST['sql_kind'])) {
             $sql_kind = $_POST['sql_kind'];
         }
 
@@ -39,12 +34,12 @@ if ($link) {
                 $comment = $_POST['comment'];
             }
             $comment = delete_space($comment);
-            if (check_emp($comment)) {
-                $err_msg['comment'] = 'コメントが未入力です';
-            }
             if (check_str($comment, 100)) {
                 $err_msg['comment'] = 'コメントは100文字以内でお願いします';
             }
+            // if (check_emp($comment)) {
+            //     $err_msg['comment'] = 'コメントが未入力です';
+            // }
 
             $user_bbs = [
                 'user_id' => $user_id,
@@ -60,6 +55,15 @@ if ($link) {
             $filename = './bbs_fileUpload/' . date("YMDHis") .'.' . $file_ext;// 本来のファイル名
             $err_msg = img_up($tempFile, $file_ext, $filename, $err_msg);//img upload関数
 
+            // 写真だけの投稿を許可する
+            if ($file_ext !== '' && check_emp($comment) === false) {
+                $user_bbs['comment'] = '';
+            }
+            if ($file_ext === '' && check_emp($comment)) {
+                $user_bbs['comment'] = $comment;
+                $err_msg['comment'] = 'コメントが未入力です';
+            }
+
             if (empty($err_msg)) {
                 if ($file_ext === '') {//写真がなくてもtweetさせるため''
                     $filename= '';
@@ -74,7 +78,7 @@ if ($link) {
             }
 
             if (empty($err_msg)) {
-                if (delete_chill_table($link, $user_id, $comment_id) === true) {
+                if (delete_chill_table($link, $user_id, $comment_id)) {
                     $msg[] = 'コメントを削除しました';
                 } else {
                     $err_msg['fail'] = 'コメントの削除に失敗しました';
@@ -84,7 +88,7 @@ if ($link) {
     }
 
     $icon_data= [];
-    $icon_data=get_icon_table($link, $user_id);
+    $icon_data= get_icon_table($link, $user_id);
 
     //paging
     $result = paging($link, $user_id);
@@ -98,7 +102,7 @@ if ($link) {
     }
     $page = max($page, 1);//マイナスの制御
     $count = count($result_data);//page数の計算
-    $maxPage = ceil($count /5);//最大ページの計算
+    $maxPage = ceil($count / 5);//最大ページの計算
     $page = min($page, $maxPage);//$maxPageより大きい数字が入らない
 
     $start = 5 * ($page-1); //offset
