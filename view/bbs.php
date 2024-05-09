@@ -49,7 +49,7 @@
 				</div>
 				<div class="img-up">
 					<!-- <i class="far fa-images"></i> -->
-					<input type="file" name="new_img" value="">
+					<input type="file" name="new_img" value="" accept='.png,.jpeg,.jpg'>
 				</div>
 
 				<?php foreach ($err_msg as $value) : ?>
@@ -70,15 +70,19 @@
 			</form>
 
 			<p class="result">
-				Tweets<?php echo count($result_data); ?>件
+				<span><?php echo count($result_data); ?></span>tweets
 			</p>
+
 			<?php foreach ($data as $value) : ?>
 			<form method="post" class="delete_form">
 				<div class="comment-all">
 					<div>
-						<span class="name">
-							<?php echo $value['user_name']; ?>
-						</span><br>
+						<div class="user">
+							<img class="user_icon" src="<?php echo $value['iconImg'];?>">
+							<span class="name">
+								<?php echo $value['user_name']; ?>
+							</span>
+						</div>
 						<span
 							class="date"><?php echo $value['date']; ?>
 						</span>
@@ -93,6 +97,7 @@
 								class="img-size">
 							<?php endif; ?>
 						</div>
+						<!-- Delete Button -->
 						<?php if ($value['user_id'] === $user_id) : ?>
 							<input type="submit" value="&#xf2ed;" class="btn-del fas">
 							<input type="hidden" name="comment_id"
@@ -104,7 +109,7 @@
 			</form>
 			<?php endforeach; ?>
 
-			<div class="pasination">
+			<div class="pagination">
 				<?php if ($page > 1) : ?>
 				<div class="back">
 					<a class="page"
@@ -131,7 +136,7 @@
 
 	$(function() {
 		$('.delete_form').submit(function() {
-			return confirm("Do you really want to delete?");
+			return confirm("Would you like to delete this tweet?");
 		});
 	});
 </script>
