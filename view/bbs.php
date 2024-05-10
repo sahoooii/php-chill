@@ -136,7 +136,7 @@
 
 	$(function() {
 		$('.delete_form').submit(function() {
-			return confirm("Would you like to delete this tweet?");
+			return confirm("Tweetを削除しますか?");
 		});
 	});
 </script>
