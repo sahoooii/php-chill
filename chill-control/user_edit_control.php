@@ -18,11 +18,6 @@ session_start();
 
 $user_id = login_check($link);
 
-// $user_name = get_user_name($link, $user_id);///user nameを取得
-// $email = get_email($link, $user_id);///user nameを取得
-$email = get_user($link, $user_id)['email'];
-
-
 if ($link) {
     mysqli_set_charset($link, 'UTF8');
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -66,7 +61,7 @@ if ($link) {
             if (check_emp($user['user_name'])) {
                 $err_msg['user_name'] = 'ユーザー名が未入力です';
             } elseif (user_check($user['user_name'])) {
-                $err_msg['user_name'] = 'ユーザー名は6文字以上の文字を入力してください';
+                $err_msg['user_name'] = 'ユーザー名は6文字以上の英数字を入力してください';
             }
             $row = user_name_check($link, $user['user_name']);
             if (isset($row[0]['user_name']) && $row[0]['user_id'] !== $user_id) {
@@ -112,9 +107,22 @@ if ($link) {
                 if (update_user_info($link, $user, $filename)) {
                     $msg[] ='User情報を更新しました';
                 } else {
-                    $err_msg['fail'] = 'Userほ情報の更新に失敗しました';
+                    $err_msg['fail'] = 'Userの情報の更新に失敗しました';
                 }
             }
+        } elseif ($sql_kind === 'delete') {
+            if (empty($err_msg)) {
+                if (delete_user_table($link, $user_id)) {
+                    // セッションIDを無効化
+                    session_destroy();
+                    // ログアウトの処理が完了したらログインページへリダイレクト
+                    header('Location: ./login.php');
+                    exit;
+                } else {
+                    $err_msg['fail'] = 'Userの削除に失敗しました';
+                }
+            }
+
         }
     }
     $data= get_user_edit($link, $user_id);

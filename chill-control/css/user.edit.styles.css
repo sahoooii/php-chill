@@ -3,7 +3,6 @@
 /*contents*/
 .contents {
 	background-image: url('../img/beach.jpeg');
-	/* height: 100%; */
 	width: 100%;
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -13,33 +12,29 @@
 }
 
 .container {
-	margin: 0 auto;
-	width: 325px;
-	height: 800px;
+	width: 90%;
+	height: auto;
 	background: linear-gradient(-135deg, #c6ffdd, #fbd786, #f7797d);
-	padding-top: 20px;
+	padding: 40px 0 30px 0;
+	text-align: center;
+	border-radius: 4px;
 }
 
 .contents h3 {
-	font-size: 35px;
+	font-size: 30px;
 	text-align: center;
-	margin-top: 20px;
-}
-
-.edit {
-	width: 325px;
 }
 
 .icon {
-	width: 325px;
 	display: flex;
 	justify-content: center;
 }
 
-.item-img {
+.user-icon {
 	width: 120px;
-	height: auto;
-	max-height: 150px;
+	height: 120px;
+	border-radius: 50%;
+	object-fit: cover;
 	border-radius: 50%;
 	margin: 20px 0;
 }
@@ -47,49 +42,46 @@
 .user {
 	font-weight: bold;
 	font-size: 18px;
-	width: 325px;
-	display: flex;
-	justify-content: center;
+	width: 100%;
+}
+
+.user label {
+	text-align: left;
+}
+
+.user:last-child {
+	padding-top: 10px;
+	width: 280px;
 }
 
 .user_info {
 	font-family: Quicksand;
-	width: 270px;
-	outline-color: #1c74fc;
+	width: 280px;
+	margin: 0;
 }
 
-.img_font {
+.err-msg-container {
+	margin: 0 auto;
+	width: 280px;
+}
+
+.err-msg {
+	font-size: 14px;
+	text-align: left;
+	margin-bottom: 0;
+}
+
+.img {
 	font-size: 14px;
 	width: 270px;
-}
-
-.privacy {
-	margin-top: 10px;
-	margin-left: -15px;
-	width: 270px;
+	border-style: none;
 }
 
 .btn {
-	width: 325px;
-	display: flex;
-	justify-content: flex-end;
-	padding-right: 15px;
+	width: 90%;
+	margin-top: 15px;
 }
 
-.err_msg {
-	font-weight: bold;
-	text-align: center;
-	color: red;
-	margin-top: 15px;
-	/* margin-left: 25px; */
-}
-
-/* .success-msg {
-	font-weight: bold;
-	text-align: center;
-	color: blue;
-	margin-top: 15px;
-} */
 .success-msg {
 	font-size: 22px;
 	color: #ff5f6d;
@@ -102,38 +94,64 @@
 	text-align: center;
 }
 
+/* Deelete Button */
+.delete_btn {
+	margin-top: 20px;
+	text-align: center;
+	width: 100%;
+}
+
+.btn-del {
+	cursor: pointer;
+	font-size: 18px;
+	border: none;
+	background-color: transparent;
+	color: white;
+	opacity: 0.9;
+	border-radius: 4px;
+	padding: 6px 0px;
+	outline: none;
+}
+
+.btn-del:hover {
+	opacity: 0.5;
+}
+
+.btn-del:active {
+	-webkit-transform: translateY(4px);
+	transform: translateY(3px); /*下に動く*/
+	border-bottom: none; /*線を消す*/
+}
+
 @media (min-width: 768px) {
+	.contents {
+		padding-bottom: 120px;
+	}
+
 	.container {
-		width: 550px;
-		height: 1050px;
+		width: 70%;
+		height: auto;
+		padding: 60px 0 50px 0;
 	}
 
 	.contents h3 {
-		font-size: 3.5rem;
+		font-size: 3rem;
 	}
 
-	.edit {
-		width: 550px;
-	}
-
-	.icon {
-		width: 550px;
-	}
-
-	.item-img {
+	.user-icon {
 		width: 150px;
-		height: auto;
-		max-height: 180px;
-		border-radius: 50%;
+		height: 150px;
 		margin: 20px 0;
 	}
 
 	.user {
-		width: 550px;
-		display: flex;
-		justify-content: center;
-		margin-left: 0;
+		width: 100%;
 		font-size: 2rem;
+	}
+
+	.user:last-child {
+		padding-top: 10px;
+		width: 450px;
 	}
 
 	.user_info {
@@ -142,22 +160,30 @@
 		outline-color: #1c74fc;
 	}
 
-	.img_font {
-		font-size: 1.2rem;
+	.err-msg-container {
 		width: 450px;
 	}
 
-	.privacy {
-		margin-left: -30px;
+	.img {
+		font-size: 1.2rem;
 		width: 450px;
 	}
 
 	.btn {
-		width: 550px;
-		padding-right: 40px;
+		width: 90%;
 	}
 
 	.add {
 		font-size: 1.2rem;
+	}
+}
+
+@media (min-width: 960px) {
+	.container {
+		width: 55%;
+	}
+
+	.btn {
+		width: 80%;
 	}
 }
