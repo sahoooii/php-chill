@@ -155,21 +155,7 @@ function login_check()
     }
 }
 
-//user nameを返す
-function get_user_name($link, $user_id)
-{
-    $query = 'SELECT user_name FROM chill_user_table WHERE user_id = ' . $user_id .'';
-    $data = get_as_array($link, $query);
-    return $data[0]['user_name'];
-}
-
-function get_email($link, $user_id)
-{
-    $query = 'SELECT email FROM chill_user_table WHERE user_id = ' . $user_id .'';
-    $data = get_as_array($link, $query);
-    return $data[0]['email'];
-}
-
+// Get email and user_name
 function get_user($link, $user_id)
 {
     $query = 'SELECT email, user_name FROM chill_user_table WHERE user_id = ' . $user_id .'';

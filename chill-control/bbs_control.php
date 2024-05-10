@@ -62,6 +62,8 @@ if ($link) {
             if ($file_ext === '' && check_emp($comment)) {
                 $user_bbs['comment'] = $comment;
                 $err_msg['comment'] = 'コメントが未入力です';
+            } else {
+                $user_bbs['comment'] = $comment;
             }
 
             if (empty($err_msg)) {

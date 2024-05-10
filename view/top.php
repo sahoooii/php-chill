@@ -58,7 +58,7 @@
 					</ul>
 					<?php endif; ?>
 				</div>
-				<div class=" user">
+				<div class="user">
 					<label>Password: <br>
 						<input type="password" name="password" class="user_info"  placeholder="6文字以上の英数字で入力..."
 							value="<?php if (isset($user['password'])) : echo $user['password']; endif; ?>">
