@@ -94,6 +94,35 @@
 	text-align: center;
 }
 
+/* Deelete Button */
+.delete_btn {
+	margin-top: 20px;
+	text-align: center;
+	width: 100%;
+}
+
+.btn-del {
+	cursor: pointer;
+	font-size: 18px;
+	border: none;
+	background-color: transparent;
+	color: white;
+	opacity: 0.9;
+	border-radius: 4px;
+	padding: 6px 0px;
+	outline: none;
+}
+
+.btn-del:hover {
+	opacity: 0.5;
+}
+
+.btn-del:active {
+	-webkit-transform: translateY(4px);
+	transform: translateY(3px); /*下に動く*/
+	border-bottom: none; /*線を消す*/
+}
+
 @media (min-width: 768px) {
 	.contents {
 		padding-bottom: 120px;

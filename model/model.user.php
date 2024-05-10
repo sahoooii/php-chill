@@ -59,7 +59,7 @@ function get_icon_table($link, $user_id)
     return get_as_array($link, $sql);
 }
 
-// user-edit_page
+// User Edit Page
 function get_user_edit($link, $user_id)
 {
     $query = 'SELECT * FROM chill_user_table WHERE user_id= ' . $user_id .'';
@@ -92,5 +92,13 @@ EOT;
         WHERE user_id = "{$user['user_id']}"
 EOT;
     }
+    return mysqli_query($link, $query);
+}
+
+//user削除ボタン
+function delete_user_table($link, $user_id)
+{
+    $query = 'DELETE chill_user_table, chill_bbs_table FROM chill_user_table LEFT JOIN chill_bbs_table ON chill_user_table.user_id = chill_bbs_table.user_id WHERE chill_user_table.user_id ='. $user_id . '';
+
     return mysqli_query($link, $query);
 }
