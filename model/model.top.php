@@ -163,7 +163,7 @@ function get_user($link, $user_id)
     return $data[0];
 }
 
-//user admin
+//Admin user get all users data
 function get_user_table($link)
 {
     $query = 'SELECT * FROM chill_user_table';

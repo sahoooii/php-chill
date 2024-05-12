@@ -66,6 +66,7 @@ function get_user_edit($link, $user_id)
     return get_as_array($link, $query);
 }
 
+// imgがある時とないとき
 function update_user_info($link, $user, $filename)
 {
     if ($filename === '') {
@@ -95,9 +96,19 @@ EOT;
     return mysqli_query($link, $query);
 }
 
-//user削除ボタン
+//user data削除ボタン
 function delete_user_table($link, $user_id)
 {
+    $query = 'DELETE chill_user_table, chill_bbs_table FROM chill_user_table LEFT JOIN chill_bbs_table ON chill_user_table.user_id = chill_bbs_table.user_id WHERE chill_user_table.user_id ='. $user_id . '';
+
+    return mysqli_query($link, $query);
+}
+
+//user削除ボタンBy admin
+function delete_user_byAdmin($link, $user_id, $comment_id)
+{
+    // $query = 'DELETE FROM chill_bbs_table WHERE user_id = ' . $user_id . ' AND comment_id = ' . $comment_id .'';
+
     $query = 'DELETE chill_user_table, chill_bbs_table FROM chill_user_table LEFT JOIN chill_bbs_table ON chill_user_table.user_id = chill_bbs_table.user_id WHERE chill_user_table.user_id ='. $user_id . '';
 
     return mysqli_query($link, $query);
