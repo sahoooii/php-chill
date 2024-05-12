@@ -1,23 +1,25 @@
 <?php
 
 require __DIR__ . '/../vendor/autoload.php';
-
 require_once '../conf/conf.php';
 require_once '../model/model.top.php';
+require_once '../model/model.user.php';
 require_once '../lib/mysqli.php';
 
 $data = array();
+$msg = [];
+$err_msg = [];
 
 $link = get_db_connect();// DB接続
 $admin = get_admin_connect();//admin情報
 
 session_start();
 
-$user_id = login_check($link);
+$admin_id = login_check($link);
 
-// $user_name = get_user_name($link, $user_id);
-$email = get_user($link, $user_id)['email'];
+$email = get_user($link, $admin_id)['email'];
 
+// admin user check
 if($email !== $admin[0]) {
     header('Location: ./login-control.php');
     exit;
@@ -25,9 +27,29 @@ if($email !== $admin[0]) {
 
 if ($link) {
     mysqli_set_charset($link, 'UTF8');
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (isset($_POST['sql_kind'])) {
+            $sql_kind = $_POST['sql_kind'];
+        }
+        if ($sql_kind === 'delete') {
+            if (isset($_POST['user_id'])) {
+                $user_id = $_POST['user_id'];
+            }
+            if (delete_user_table($link, $user_id)) {
+                $msg[] = 'アカウントを削除しました';
+            } else {
+                $err_msg[] = 'アカウントの削除に失敗しました';
+            }
+        }
+    }
+
     $data = get_user_table($link);
     $data = entity_assoc_array($data);
     close_db_connect($link); // 接続を閉じる
 }
 
-include_once '../view/user.admin.php';//htmlの呼び出し
+$title = 'Users List';
+$stylesheet = 'css/admin.styles.css';
+$content = __DIR__ . '/../view/user.admin.php';
+
+include __DIR__ . '/../view/layout.php';

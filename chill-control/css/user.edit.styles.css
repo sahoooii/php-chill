@@ -60,6 +60,10 @@
 	margin: 0;
 }
 
+.status {
+	font-family: Quicksand;
+}
+
 .err-msg-container {
 	margin: 0 auto;
 	width: 280px;
@@ -155,7 +159,6 @@
 	}
 
 	.user_info {
-		font-family: Quicksand;
 		width: 450px;
 		outline-color: #1c74fc;
 	}
