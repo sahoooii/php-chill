@@ -254,18 +254,16 @@ textarea::placeholder {
 }
 
 /*page*/
-/* .next {
-	padding-bottom: 100px;
-} */
 .pagination {
 	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	margin-top: 20px;
 	margin-bottom: 100px;
 }
 
 .fa-backward:before {
 	margin-left: 5px;
-	/* margin-right: 10px; */
 }
 
 .fa-forward:before {

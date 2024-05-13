@@ -163,10 +163,17 @@ function get_user($link, $user_id)
     return $data[0];
 }
 
-//user admin
+//Admin user get all users data
 function get_user_table($link)
 {
     $query = 'SELECT * FROM chill_user_table';
+    return get_as_array($link, $query);
+}
+
+// Admin user get users data with paging
+function get_userData_paging($link, $start, $pageNum)
+{
+    $query = 'SELECT * FROM chill_user_table' . ' ORDER BY updated_at ASC LIMIT ' . $start . ' , '. $pageNum .'';
     return get_as_array($link, $query);
 }
 
