@@ -118,7 +118,7 @@
 					</a>
 				</div>
 				<?php endif; ?>
-				<?php if ($page * 5 < count($result_data)) : ?>
+				<?php if ($page * $pageNum < count($result_data)) : ?>
 					<div class="next">
 						<a class="page"
 							href="?page=<?php echo($page + 1); ?>">Next<i

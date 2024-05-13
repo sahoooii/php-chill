@@ -46,9 +46,9 @@ function paging($link, $user_id)
     return $result;
 }
 
-function get_chill_table($link, $user_id, $start)
+function get_chill_table($link, $user_id, $start, $pageNum)
 {
-    $sql = 'SELECT chill_bbs_table.comment_id, chill_bbs_table.user_id, chill_bbs_table.user_name, chill_bbs_table.comment, chill_bbs_table.img, chill_bbs_table.date, chill_user_table.status, chill_user_table.img as iconImg FROM chill_bbs_table LEFT JOIN chill_user_table ON chill_bbs_table.user_id = chill_user_table.user_id WHERE status= 1 OR chill_user_table.user_id=' . $user_id .' ORDER BY date DESC LIMIT ' . $start . ',5';
+    $sql = 'SELECT chill_bbs_table.comment_id, chill_bbs_table.user_id, chill_bbs_table.user_name, chill_bbs_table.comment, chill_bbs_table.img, chill_bbs_table.date, chill_user_table.status, chill_user_table.img as iconImg FROM chill_bbs_table LEFT JOIN chill_user_table ON chill_bbs_table.user_id = chill_user_table.user_id WHERE status= 1 OR chill_user_table.user_id=' . $user_id .' ORDER BY date DESC LIMIT ' . $start . ', '. $pageNum .'';
     return get_as_array($link, $sql);
 }
 
@@ -99,16 +99,6 @@ EOT;
 //user data削除ボタン
 function delete_user_table($link, $user_id)
 {
-    $query = 'DELETE chill_user_table, chill_bbs_table FROM chill_user_table LEFT JOIN chill_bbs_table ON chill_user_table.user_id = chill_bbs_table.user_id WHERE chill_user_table.user_id ='. $user_id . '';
-
-    return mysqli_query($link, $query);
-}
-
-//user削除ボタンBy admin
-function delete_user_byAdmin($link, $user_id, $comment_id)
-{
-    // $query = 'DELETE FROM chill_bbs_table WHERE user_id = ' . $user_id . ' AND comment_id = ' . $comment_id .'';
-
     $query = 'DELETE chill_user_table, chill_bbs_table FROM chill_user_table LEFT JOIN chill_bbs_table ON chill_user_table.user_id = chill_bbs_table.user_id WHERE chill_user_table.user_id ='. $user_id . '';
 
     return mysqli_query($link, $query);

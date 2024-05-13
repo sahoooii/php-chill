@@ -16,8 +16,10 @@
 		<form method="post" action="../chill-control/login_control.php">
 			<div class="user_container">
 				<div class="user">
-					<label>Email:<br> <input type="text" name="email" class="user_info"
+					<label>Email:<br>
+					<input type="text" name="email" class="user_info"
 							placeholder="Your Email..."
+							autocomplete="off"
 							value="<?php if (isset($user['email'])) : echo $user['email']; endif; ?>">
 					</label>
 					<!-- Error msg -->
@@ -33,7 +35,7 @@
 				</div>
 				<div class="user">
 					<label>Password:<br>
-						<input type="password" name="password" class="user_info" placeholder="Your Password..."
+						<input type="password" name="password" class="user_info" placeholder="Your Password..." autocomplete="off"
 							value="<?php if (isset($user['password'])) : echo $user['password']; endif; ?>">
 					</label>
 					<!-- Error msg -->
