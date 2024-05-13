@@ -103,13 +103,14 @@ if ($link) {
         $page = 1;
     }
     $page = max($page, 1);//マイナスの制御
+		$pageNum = 5;
     $count = count($result_data);//page数の計算
-    $maxPage = ceil($count / 5);//最大ページの計算
+    $maxPage = ceil($count / $pageNum);//最大ページの計算
     $page = min($page, $maxPage);//$maxPageより大きい数字が入らない
 
-    $start = 5 * ($page-1); //offset
+    $start = $pageNum * ($page-1); //offset
     $data = [];
-    $data = get_chill_table($link, $user_id, $start);
+    $data = get_chill_table($link, $user_id, $start, $pageNum);
     $data = entity_assoc_array($data);//特殊文字をhtmlエンティティに変換
 
     close_db_connect($link);//DB切断

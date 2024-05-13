@@ -1,26 +1,28 @@
 <div class="container">
 	<div class="admin-container">
-		<h1>Chill User管理ページ</h1>
-		<!-- SHow Message -->
-		<?php foreach ($err_msg as $value) : ?>
-		<div class="err-msg-container">
-			<p class="err-msg">
-				<?php echo $value; ?>
-			</p>
+		<h1>Chill Admin</h1>
+		<div class="info">
+			<!-- SHow Message -->
+			<div class="msg-container">
+				<?php foreach ($err_msg as $value) : ?>
+				<p class="msg">
+					<?php echo $value; ?>
+				</p>
+				<?php endforeach; ?>
+				<?php foreach ($msg as $value) : ?>
+				<p class="msg">
+					<?php echo $value; ?>
+				</p>
+				<?php endforeach; ?>
+			</div>
+			<div>
+				<a class="nemu" href="./logout.php">Logout</a>
+			</div>
 		</div>
-		<?php endforeach; ?>
-		<?php foreach ($msg as $value) : ?>
-		<p class="msg">
-			<?php echo $value; ?>
-		</p>
-		<?php endforeach; ?>
 
-		<div>
-			<a class="nemu" href="./logout.php">ログアウト</a>
-		</div>
-		<h2>User情報一覧</h2>
 		<table>
 			<tr>
+				<th>ID</th>
 				<th>User Name</th>
 				<th>Email</th>
 				<th>Phone Number</th>
@@ -29,40 +31,43 @@
 				<th>Updated at</th>
 				<th>Delete</th>
 			</tr>
-
 			<tr>
 				<?php foreach ($data as $value) {
 				    if($value['status'] === '0') { ?>
-			<tr class="status-false">
+			<tr class="private">
 				<?php } else { ?>
 			<tr>
 				<?php } ?>
-
-				<td class="name_width">
+				<td>
+					<?php
+				            if ($value['email'] !== $_ENV['DB_ADMIN_EMAIL']) {
+				                echo $value['user_id'];
+				            }
+				    ?>
+				</td>
+				<td>
 					<?php echo $value['user_name']; ?>
 				</td>
-				<td class="email-width">
+				<td>
 					<?php echo $value['email']; ?>
 				</td>
-				<td class="tel-width">
+				<td>
 					<?php echo $value['tel']; ?>
 				</td>
-				<!-- <td class="status-width"><?php echo $value['status']; ?>
-				</td> -->
-				<td class="status-width">
+				<td>
 					<?php if ($value['status'] === '1') {
 					    echo 'Public';
 					} elseif ($value['status'] === '0') {
 					    echo 'Private';
 					}?>
 				</td>
-				<td class="date">
+				<td>
 					<?php echo substr($value['created_at'], 0, -3); ?>
 				</td>
-				<td class="date">
+				<td>
 					<?php echo substr($value['updated_at'], 0, -3); ?>
 				</td>
-				<!-- Here -->
+				<!-- Delete Account Button -->
 				<form method="post" class="delete_form">
 					<td class="delete-width">
 						<?php if ($value['email'] !== $_ENV['DB_ADMIN_EMAIL']) : ?>
@@ -73,15 +78,30 @@
 						<?php endif; ?>
 					</td>
 				</form>
-				<!-- <pre>
-				<?php var_dump($value['user_id']) ?>
-				</pre> -->
 			</tr>
 			<?php } ?>
 		</table>
 	</div>
-</div>
 
+	<div class="pagination">
+		<?php if ($page > 1) : ?>
+		<div class="back">
+			<a class="page"
+				href="?page=<?php echo($page - 1); ?>">Back<i
+					class="fas fa-backward"></i>
+			</a>
+		</div>
+		<?php endif; ?>
+		<?php if ($page * $pageNum < count($result)) : ?>
+			<div class="next">
+				<a class="page"
+					href="?page=<?php echo($page + 1); ?>">Next<i
+						class="fas fa-forward"></i>
+				</a>
+			</div>
+		<?php endif; ?>
+	</div>
+</div>
 
 <script>
 	'use strict';

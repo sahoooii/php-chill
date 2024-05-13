@@ -170,6 +170,13 @@ function get_user_table($link)
     return get_as_array($link, $query);
 }
 
+// Admin user get users data with paging
+function get_userData_paging($link, $start, $pageNum)
+{
+    $query = 'SELECT * FROM chill_user_table' . ' ORDER BY updated_at ASC LIMIT ' . $start . ' , '. $pageNum .'';
+    return get_as_array($link, $query);
+}
+
 // 接続を閉じる
 function close_db_connect($link)
 {
