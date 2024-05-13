@@ -120,7 +120,7 @@
 				<div class="user">
 					<label class="user">Privacy:
 						<i class="fas fa-unlock-alt"></i>
-						<select name="status">
+						<select name="status" class="status">
 							<option value="0" <?php if ($value['status'] === '0') {
 							    echo 'selected';
 							} ?>>Private
