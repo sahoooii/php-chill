@@ -165,7 +165,7 @@
 
 		$(function() {
 			$('.delete_form').submit(function() {
-				return confirm("本当に削除しますか？");
+				return confirm("アカウントを削除しますか？");
 			});
 		});
 	</script>
