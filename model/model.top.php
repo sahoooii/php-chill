@@ -116,7 +116,7 @@ function img_up($tempFile, $file_ext, $filename, $err_msg)
 }
 
 // Register登録
-function chill_user_table($link, $filename, $user)
+function chill_user_table($link, $filename, $user, $passwordHashed)
 {
     $query = <<<EOT
 INSERT INTO chill_user_table(
@@ -133,7 +133,7 @@ INSERT INTO chill_user_table(
     "{$user['user_name']}",
     "{$user['email']}",
     "{$user['tel']}",
-    "{$user['password']}",
+    "{$passwordHashed}",
     "{$user['status']}",
     "{$user['created_date']}",
     "{$user['updated_date']}"

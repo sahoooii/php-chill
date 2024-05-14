@@ -67,7 +67,7 @@ function get_user_edit($link, $user_id)
 }
 
 // imgがある時とないとき
-function update_user_info($link, $user, $filename)
+function update_user_info($link, $user, $passwordHashed, $filename)
 {
     if ($filename === '') {
         $query =<<<EOT
@@ -75,7 +75,7 @@ function update_user_info($link, $user, $filename)
         user_name ="{$user['user_name']}",
         email = "{$user['email']}",
         tel = "{$user['tel']}",
-        password = "{$user['password']}",
+        password = "{$passwordHashed}",
         status = "{$user['status']}",
         updated_at = "{$user['updated_date']}"
         WHERE user_id = "{$user['user_id']}"
@@ -86,7 +86,7 @@ EOT;
         user_name = "{$user['user_name']}",
         email = "{$user['email']}",
         tel = "{$user['tel']}",
-        password = "{$user['password']}",
+        password = "{$passwordHashed}",
         img = "{$filename}",
         status = "{$user['status']}",
         updated_at = "{$user['updated_date']}"
