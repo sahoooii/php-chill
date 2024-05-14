@@ -90,7 +90,7 @@
 				<div class="user">
 					<label>Password: <br>
 						<input type="password" name="password" class="user_info"
-							value="<?php echo $value['password']; ?>">
+							value="<?php if (isset($user['password'])) : echo $user['password']; endif; ?>">
 					</label>
 					<!-- Error msg -->
 					<?php if (isset($err_msg['password'])) : ?>
@@ -149,23 +149,23 @@
 				</div>
 				<input type="hidden" name="user_id"
 					value="<?php echo $value['user_id']; ?>">
-				</form>
-				<!-- Delete account Button -->
-				<form method="post" class="delete_form">
-					<div class="delete_btn">
-						<input type="submit" value="&#xf2ed; DELETE ACCOUNT" class="btn-del fas">
-					</div>
-					<input type="hidden" name="sql_kind" value="delete">
-				</form>
+			</form>
+			<!-- Delete account Button -->
+			<form method="post" class="delete_form">
+				<div class="delete_btn">
+					<input type="submit" value="&#xf2ed; DELETE ACCOUNT" class="btn-del fas">
+				</div>
+				<input type="hidden" name="sql_kind" value="delete">
+			</form>
 		</div>
 	</div>
 
 	<script>
-	'use strict';
+		'use strict';
 
-	$(function() {
-		$('.delete_form').submit(function() {
-			return confirm("本当に削除しますか？");
+		$(function() {
+			$('.delete_form').submit(function() {
+				return confirm("本当に削除しますか？");
+			});
 		});
-	});
-</script>
+	</script>
