@@ -8,6 +8,7 @@ $err_msg = [];
 
 $link = get_db_connect();// DB接続
 $admin = get_admin_connect();//admin情報
+
 // セッション開始
 session_start();
 
@@ -34,22 +35,23 @@ if ($link) {
         }
 
         $user = [
-            'email' => $email,
-            'password' => $password,
+                'email' => $email,
+                'password' => $password,
         ];
 
         if (empty($err_msg)) {
-            // emailとpasswordからuser_idを取得するSQL
-            $sql = 'SELECT user_id FROM chill_user_table WHERE email = "' . $email .'" AND password = "' . $password .'"';
-            // SQL実行し登録データを配列で取得
+            // emailからuser_id,email,passwordを取得するSQL
+            $sql = 'SELECT user_id, email, password FROM chill_user_table WHERE email = "' . $email .'"';
             $data = get_as_array($link, $sql);
-            // データベース切断
             close_db_connect($link);
-            // 登録データを取得できたか確認
-            if (isset($data[0]['user_id'])) {
+
+            // Userが見つからなければ
+            if (empty($data)) {
+                $err_msg['fail'] = 'Userが登録されていません';
+            } elseif (!empty($data) && password_verify($user['password'], $data[0]['password'])) {
                 // セッション変数にuser_idを保存
                 $_SESSION['user_id'] = $data[0]['user_id'];
-								// admin user check
+                // admin user check
                 if ($email === $admin[0] && $password === $admin[1]) {
                     header('Location: ./user_admin_control.php');
                     exit;
@@ -58,7 +60,7 @@ if ($link) {
                 header('Location: ./bbs_control.php');
                 exit;
             } else {
-                $err_msg['fail'] = 'メールアドレスとパスワードが一致しません';
+                $err_msg['fail'] = 'パスワードが違います';
             }
         }
     }

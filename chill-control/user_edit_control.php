@@ -45,6 +45,7 @@ if ($link) {
             $email = delete_space($email);
             $tel = delete_space($tel);
             $password = delete_space($password);
+            $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
 
             $user = [
                 'user_id' => $user_id,
@@ -104,7 +105,7 @@ if ($link) {
                 if ($file_ext === '') {//写真の変更をしなくてもエラーにならないようにする
                     $filename= '';
                 }
-                if (update_user_info($link, $user, $filename)) {
+                if (update_user_info($link, $user, $passwordHashed, $filename)) {
                     $msg[] ='User情報を更新しました';
                 } else {
                     $err_msg['fail'] = 'Userの情報の更新に失敗しました';

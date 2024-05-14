@@ -34,6 +34,7 @@ if ($link) {
         $email = delete_space($email);
         $tel = delete_space($tel);
         $password = delete_space($password);
+        $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
 
         $user = [
             'user_name' => $user_name,
@@ -47,13 +48,13 @@ if ($link) {
 
         //validation
         if (check_emp($user['user_name'])) {
-            $err_msg['user_name'] = 'ユーザー名が未入力です';
+            $err_msg['user_name'] = 'Userが未入力です';
         } elseif (user_check($user['user_name'])) {
-            $err_msg['user_name'] = 'ユーザー名は6文字以上の英数字で入力してください';
+            $err_msg['user_name'] = 'Userは6文字以上の英数字で入力してください';
         }
         $row = user_name_check($link, $user['user_name']);
         if (isset($row[0]['user_name'])) {
-            $err_msg['user_name'] = 'ユーザー名がすでに存在します';
+            $err_msg['user_name'] = 'Userがすでに存在します';
         }
 
         if (check_emp($user['password'])) {
@@ -90,7 +91,7 @@ if ($link) {
         $err_msg = img_up($tempFile, $file_ext, $filename, $err_msg);//img upload関数
 
         if (empty($err_msg)) {
-            if (chill_user_table($link, $filename, $user)) {
+            if (chill_user_table($link, $filename, $user, $passwordHashed)) {
                 $success = true;
             }
         }
