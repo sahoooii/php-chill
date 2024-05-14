@@ -16,7 +16,6 @@ $admin = get_admin_connect();//admin情報
 session_start();
 
 $admin_id = login_check($link);
-
 $email = get_user($link, $admin_id)['email'];
 
 // admin user check
