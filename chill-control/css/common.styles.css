@@ -1,0 +1,183 @@
+* {
+	box-sizing: border-box;
+}
+
+body,
+html {
+	height: 100%;
+	margin: 0 auto;
+	/*font-family: Quicksand;*/
+	font-family: 'Lobster', cursive;
+	letter-spacing: 2px;
+}
+
+/*header*/
+header {
+	width: 100%;
+	height: 150px;
+	background: linear-gradient(-135deg, #00c9ff, #92fe9d);
+}
+
+.header-box {
+	/* height: 150px; */
+}
+
+.navbar {
+	padding: 0;
+	/* height: 150px; */
+	/* width: 100%; */
+	/* text-align:center; */
+}
+.header-title {
+	margin: 0 auto;
+	/* height: 150px;
+    width: 100%; */
+	display: flex;
+	justify-content: center;
+}
+
+.logo {
+	display: none;
+	width: 150px;
+	height: 150px;
+}
+
+.header-title h2 {
+	font-size: 60px;
+	line-height: 150px;
+	color: #fff;
+	margin-bottom: 0;
+	padding-left: 15px;
+	transition: all 0.3s;
+}
+
+.header-title h2:hover {
+	color: #ff5f6d;
+	background: -webkit-linear-gradient(0deg, #ff5f6d, #ffc371);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.fa-cocktail {
+	color: #ff5f6d;
+	background: -webkit-linear-gradient(0deg, #fc5c7d, #6a82fb);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	margin-left: 3px;
+}
+
+/* btn */
+
+.add {
+	cursor: pointer;
+	width: 100%;
+	/* height: 40px; */
+	background: linear-gradient(-135deg, #fc466b, #3f5efb);
+	color: #fff;
+	padding: 12px;
+	border-radius: 4px;
+	border: none;
+	outline: none;
+	text-decoration: none;
+	font-family: 'Pacifico', cursive;
+	font-weight: bold;
+	transition: all 0.2s;
+}
+
+.add:active {
+	-webkit-transform: translateY(4px);
+	transform: translateY(3px); /*下に動く*/
+	border-bottom: none; /*線を消す*/
+}
+
+.add:hover {
+	opacity: 0.8;
+}
+
+.err-msg {
+	color: #fc246c;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+/* ul */
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+/* input */
+input {
+	outline: none;
+	padding: 2px 2px 2px 10px;
+	border-radius: 4px;
+	border: 1px solid gray;
+}
+
+input::placeholder {
+	font-size: 12px;
+	vertical-align: middle;
+}
+
+/* link */
+a {
+	text-decoration: none;
+}
+
+.links {
+	margin: 0 auto;
+	padding-bottom: 20px;
+	width: 316px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.link {
+	font-size: 20px;
+}
+
+.link + .link {
+	margin-left: 15px;
+}
+
+.link > a {
+	color: #fff;
+}
+
+.link > a:hover {
+	color: #ff5f6d;
+	background: -webkit-linear-gradient(0deg, #ff5f6d, #ffc371);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+@media (min-width: 768px) {
+	/* header */
+	.logo {
+		display: block;
+		transition: all 0.3s;
+	}
+
+	.title h2 {
+		font-size: 70px;
+		margin-left: 7px;
+	}
+
+	/* main */
+	.container {
+		width: 768px;
+	}
+
+	.links {
+		width: 500px;
+	}
+
+	.link > a {
+		font-size: 26px;
+	}
+
+	input::placeholder {
+		font-size: 18px;
+	}
+}
