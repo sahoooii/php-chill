@@ -14,7 +14,7 @@ session_start();
 
 // セッション変数からログイン済みか確認
 if (isset($_SESSION['user_id'])) {   // ログイン済みの場合、ホームページへリダイレクト
-    header('Location: ./bbs_control.php');
+    header('Location: /bbs');
     exit;
 }
 
@@ -53,11 +53,11 @@ if ($link) {
                 $_SESSION['user_id'] = $data[0]['user_id'];
                 // admin user check
                 if ($email === $admin[0] && $password === $admin[1]) {
-                    header('Location: ./user_admin_control.php');
+                    header('Location: /admin');
                     exit;
                 }
                 // ログイン済みユーザのホームページへリダイレクト
-                header('Location: ./bbs_control.php');
+                header('Location: /bbs');
                 exit;
             } else {
                 $err_msg['fail'] = 'パスワードが違います';

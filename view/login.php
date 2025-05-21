@@ -1,18 +1,12 @@
-<header>
-	<div class="header-box">
-		<div class="header-title">
-			<img class="logo d-none d-md-block" src="./img/Chill.png" alt="chill_logo">
-			<a href="top.php" class="navbar-brand">
-				<h2>Wanna<i class="fas fa-cocktail"></i>?
-				</h2>
-			</a>
-		</div>
-	</div>
-</header>
+<?php
+$navbar_link = '/';
+require __DIR__ . '/components/navbar.php';
+?>
+
 <div class="contents-login">
 	<div class="login">
 		<h3>Login Here</h3>
-		<form method="post" action="../chill-control/login_control.php">
+		<form method="post" action="/login_control">
 			<div class="user_container">
 				<div class="user">
 					<label>Email:<br>

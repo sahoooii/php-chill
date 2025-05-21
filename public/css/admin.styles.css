@@ -1,0 +1,118 @@
+.admin-container {
+	margin: 50px 0;
+}
+
+h1 {
+	text-align: center;
+	font-size: 3rem;
+	font-family: 'Lobster', cursive;
+}
+
+.info {
+	margin: 15px 0 30px 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.msg-container {
+	font-family: sans-serif;
+	align-items: center;
+}
+
+.msg {
+	color: red;
+	font-size: 1.3rem;
+	font-weight: bold;
+	margin-bottom: 0;
+}
+
+.nemu {
+	font-size: 1.3rem;
+	color: gray;
+}
+
+.nemu:hover {
+	text-decoration: none;
+	color: gray;
+	opacity: 0.7;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+table,
+tr,
+th,
+td {
+	border: solid 1px;
+	padding: 20px 10px;
+	text-align: center;
+	font-family: sans-serif;
+}
+
+.private {
+	background-color: silver;
+}
+
+/* Deelete Button */
+.btn-del {
+	cursor: pointer;
+	font-size: 1.2rem;
+	border: none;
+	background-color: transparent;
+	color: red;
+}
+
+.btn-del:hover {
+	opacity: 0.5;
+}
+
+.btn-del:active {
+	-webkit-transform: translateY(4px);
+	transform: translateY(3px); /*下に動く*/
+	border-bottom: none; /*線を消す*/
+}
+
+/*page*/
+.pagination {
+	display: flex;
+	margin-top: 20px;
+	margin-bottom: 100px;
+}
+
+.fa-backward:before {
+	margin-left: 5px;
+}
+
+.fa-forward:before {
+	margin-left: 5px;
+}
+
+/* page */
+.pagination {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.page {
+	color: #ff5f6d;
+	background: -webkit-linear-gradient(0deg, #ff5f6d, #ffc371);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	text-decoration: none;
+	font-size: 1.3rem;
+	font-weight: bold;
+	transition: all 0.3s ease 0s;
+}
+
+.page:hover {
+	opacity: 0.7;
+	text-decoration: none;
+	transform: scale(1.1);
+}
