@@ -1,9 +1,10 @@
 <?php
-// ログイン済みユーザのホームページ
+
 require_once '../conf/conf.php';
 require_once '../model/model.top.php';
 require_once '../model/model.user.php';
 require_once '../lib/mysqli.php';
+require_once '../lib/file_upload_helper.php';
 
 $err_msg = [];
 $msg = [];
@@ -95,18 +96,25 @@ if ($link) {
                 $err_msg['status']= 'ステータスはPrivateかPublicでお願いします';
             }
 
-            $tempFile = $_FILES['new_img']['tmp_name'];
-            $file_ext = pathinfo($_FILES['new_img']['name'], PATHINFO_EXTENSION);
-            $file_ext = strtolower($file_ext);
-            $filename = './file_upload/' . date("YMDHis") .'.' . $file_ext;
-            $err_msg = img_up($tempFile, $file_ext, $filename, $err_msg);
+            $filename = $_POST['img'] ?? '';
 
-            if (empty($err_msg)) {
-                if ($file_ext === '') {//写真の変更をしなくてもエラーにならないようにする
-                    $filename= '';
-                }
+            if (count($err_msg) === 0) {
+                $upload_result = handle_file_upload(
+                    'new_img',
+                    'file_upload',
+                    'img_up',
+                    'return_public_path_only',
+                    $link,
+                    [],
+                    $err_msg,
+                    true
+                );
+
+                // 成功していればその画像に差し替え（空なら前の画像を使う）
+                $filename = $upload_result ?: ($_POST['new_img'] ?? '');
+
                 if (update_user_info($link, $user, $passwordHashed, $filename)) {
-                    $msg[] ='User情報を更新しました';
+                    $msg[] = 'User情報を更新しました';
                 } else {
                     $err_msg['fail'] = 'Userの情報の更新に失敗しました';
                 }
@@ -114,7 +122,7 @@ if ($link) {
         } elseif ($sql_kind === 'delete') {
             if (empty($err_msg)) {
                 if (delete_user_table($link, $user_id)) {
-                    header('Location: ./logout.php');
+                    header('Location: /logout');
                     exit;
                 } else {
                     $err_msg['fail'] = 'Userの削除に失敗しました';

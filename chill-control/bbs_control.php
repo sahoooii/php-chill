@@ -1,9 +1,10 @@
 <?php
-// ログイン済みユーザのホームページ
+
 require_once '../conf/conf.php';//設定ファイルの呼び出し
 require_once '../model/model.top.php';
 require_once '../model/model.user.php';
 require_once '../lib/mysqli.php';
+require_once '../lib/file_upload_helper.php';
 
 $err_msg = [];
 $msg = [];
@@ -37,40 +38,45 @@ if ($link) {
             if (check_str($comment, 100)) {
                 $err_msg['comment'] = 'コメントは100文字以内でお願いします';
             }
-            // if (check_emp($comment)) {
-            //     $err_msg['comment'] = 'コメントが未入力です';
-            // }
 
+            // コメントのみ、写真のみ、コメント&写真
+            $has_comment = !empty($_POST['comment']);
+            $has_image = (isset($_FILES['new_img']) && $_FILES['new_img']['error'] === UPLOAD_ERR_OK);
+
+            if (!$has_comment && !$has_image) {
+                $err_msg['comment'] = 'コメントが未入力です';
+            }
+
+            // Image upload
+            $filename = handle_file_upload(
+                'new_img',
+                'bbs_fileUpload',
+                'img_up',
+                'return_public_path_only',
+                $link,
+                [],
+                $err_msg,
+								true
+            );
+
+            // 投稿内容の検証ロジック
+            if (check_emp($comment) && empty($filename)) {
+                $err_msg['comment'] = 'コメントまたは画像のいずれかを入力してください。';
+            }
+
+            // user_bbs配列構築
             $user_bbs = [
-                'user_id' => $user_id,
-                'user_name' => $user_name,
-                'comment' => $comment,
-                'created_date' => $created_date,
-                'updated_date' => $updated_date,
+                    'user_id' => $user_id,
+                    'user_name' => $user_name,
+                    'comment' => $comment,
+                    'created_date' => $created_date,
+                    'updated_date' => $updated_date,
             ];
 
-            $tempFile = $_FILES['new_img']['tmp_name'];
-            $file_ext = pathinfo($_FILES['new_img']['name'], PATHINFO_EXTENSION);
-            $file_ext = strtolower($file_ext);
-            $filename = './bbs_fileUpload/' . date("YMDHis") .'.' . $file_ext;// 本来のファイル名
-            $err_msg = img_up($tempFile, $file_ext, $filename, $err_msg);//img upload関数
-
-            // 写真だけの投稿を許可する
-            if ($file_ext !== '' && check_emp($comment) === false) {
-                $user_bbs['comment'] = '';
-            }
-            if ($file_ext === '' && check_emp($comment)) {
-                $user_bbs['comment'] = $comment;
-                $err_msg['comment'] = 'コメントが未入力です';
-            } else {
-                $user_bbs['comment'] = $comment;
-            }
-
             if (empty($err_msg)) {
-                if ($file_ext === '') {//写真がなくてもtweetさせるため''
-                    $filename= '';
-                }
-                if (insert_comment($link, $user_bbs, $filename) === false) {
+                if (insert_comment($link, $user_bbs, $filename ?? '')) {
+                    $msg[] = '新しいコメントをしました';
+                } else {
                     $err_msg['comment'] = 'コメントできませんでした';
                 }
             }
@@ -103,7 +109,7 @@ if ($link) {
         $page = 1;
     }
     $page = max($page, 1);//マイナスの制御
-		$pageNum = 5;
+    $pageNum = 5;
     $count = count($result_data);//page数の計算
     $maxPage = ceil($count / $pageNum);//最大ページの計算
     $page = min($page, $maxPage);//$maxPageより大きい数字が入らない

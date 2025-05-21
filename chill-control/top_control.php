@@ -3,6 +3,7 @@
 require_once '../conf/conf.php';
 require_once '../model/model.top.php';
 require_once '../lib/mysqli.php';
+require_once '../lib/file_upload_helper.php';
 
 $err_msg = [];
 $success = false;
@@ -83,16 +84,23 @@ if ($link) {
             $err_msg['status']= 'ステータスはPrivateかPublicでお願いします';
         }
 
-        // image upload
-        $tempFile = $_FILES['new_img']['tmp_name'];// 一時ファイル名img upload
-        $file_ext = pathinfo($_FILES['new_img']['name'], PATHINFO_EXTENSION);// ファイル拡張子を抜き出す
-        $file_ext = strtolower($file_ext);// 大文字を小文字にする
-        $filename = './file_upload/' . date("YMDHis") .'.' . $file_ext;// 本来のファイル名
-        $err_msg = img_up($tempFile, $file_ext, $filename, $err_msg);//img upload関数
-
+				// エラーメッセージがなければ、画像処理
         if (empty($err_msg)) {
-            if (chill_user_table($link, $filename, $user, $passwordHashed)) {
+            // image upload
+            $upload_result = handle_file_upload(
+                'new_img',
+                'file_upload',
+                'img_up',
+                'chill_user_table',
+                $link,
+                [$user, $passwordHashed],
+                $err_msg
+            );
+
+            if ($upload_result) {
                 $success = true;
+            } else {
+                $err_msg['img_up'] = '画像のアップロードに失敗しました';
             }
         }
     }
