@@ -16,7 +16,7 @@
 				<?php endforeach; ?>
 			</div>
 			<div>
-				<a class="nemu" href="./logout.php">Logout</a>
+				<a class="nemu" href="/logout">Logout</a>
 			</div>
 		</div>
 
@@ -33,7 +33,7 @@
 			</tr>
 			<tr>
 				<?php foreach ($data as $value) {
-				    if($value['status'] === '0') { ?>
+				    if ($value['status'] === '0') { ?>
 			<tr class="private">
 				<?php } else { ?>
 			<tr>
@@ -74,6 +74,8 @@
 						<input type="submit" value="&#xf2ed;" class="btn-del fas">
 						<input type="hidden" name="user_id"
 							value="<?php echo $value['user_id']; ?>">
+						<input type="hidden" name="user_name"
+							value="<?php echo $value['user_name']; ?>">
 						<input type="hidden" name="sql_kind" value="delete">
 						<?php endif; ?>
 					</td>
@@ -93,12 +95,12 @@
 		</div>
 		<?php endif; ?>
 		<?php if ($page * $pageNum < count($result)) : ?>
-			<div class="next">
-				<a class="page"
-					href="?page=<?php echo($page + 1); ?>">Next<i
-						class="fas fa-forward"></i>
-				</a>
-			</div>
+		<div class="next">
+			<a class="page"
+				href="?page=<?php echo($page + 1); ?>">Next<i
+					class="fas fa-forward"></i>
+			</a>
+		</div>
 		<?php endif; ?>
 	</div>
 </div>

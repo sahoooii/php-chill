@@ -52,7 +52,7 @@ if ($link) {
                 // セッション変数にuser_idを保存
                 $_SESSION['user_id'] = $data[0]['user_id'];
                 // admin user check
-                if ($email === $admin[0] && $password === $admin[1]) {
+                if ($email === $admin[0]) {
                     header('Location: /admin');
                     exit;
                 }
