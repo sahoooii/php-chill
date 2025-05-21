@@ -162,7 +162,7 @@ function login_check()
         $user_id =  $_SESSION['user_id'];
         return $user_id;
     } else {
-        header('Location: ./login.php');
+        header('Location: /login.php');
         exit;
     }
 }
