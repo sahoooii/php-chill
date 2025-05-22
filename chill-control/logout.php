@@ -33,5 +33,5 @@ if (isset($_COOKIE[$session_name])) {
 // セッションIDを無効化
 session_destroy();
 // ログアウトの処理が完了したらログインページへリダイレクト
-header('Location: ./login.php');
+header('Location: /login');
 exit;

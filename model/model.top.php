@@ -99,20 +99,32 @@ function status_check($value)
 }
 
 //img upload
-function img_up($tempFile, $file_ext, $filename, $err_msg)
+function img_up($tempFile, $file_ext, $save_path, &$err_msg)
 {
-    if (is_uploaded_file($tempFile)) {//アップロードされたファイルが本当にアップロード処理されたかの確認
-        if ($file_ext !== "jpeg" && $file_ext !== "jpg" && $file_ext !== "png") {
-            $err_msg['new_img'] = 'ファイルの形式が違います';
-        }
-        if (empty($err_msg)) {
-            if (move_uploaded_file($tempFile, $filename)) {//ファイルを移動
-            } else {
-                $err_msg['new_img'] = 'ファイルをアップロードできません';
-            }
-        }
+    // 対応拡張子チェック
+    $allowed_ext = ['jpeg', 'jpg', 'png'];
+    if (!in_array($file_ext, $allowed_ext)) {
+        $err_msg['new_img'] = 'ファイルの形式が違います';
+        return false;
     }
-    return $err_msg;
+
+    //アップロードされたファイルが本当にアップロード処理されたかの確認
+    if (!is_uploaded_file($tempFile)) {
+        $err_msg['new_img'] = 'アップロードされたファイルが見つかりません';
+        return false;
+    }
+
+    if (!in_array($file_ext, ['jpeg', 'jpg', 'png'])) {
+        $err_msg['new_img'] = 'ファイルの形式が違います';
+        return false;
+    }
+
+    if (!move_uploaded_file($tempFile, $save_path)) {
+        $err_msg['new_img'] = 'ファイルをアップロードできません';
+        return false;
+    }
+
+    return true;
 }
 
 // Register登録
@@ -150,7 +162,7 @@ function login_check()
         $user_id =  $_SESSION['user_id'];
         return $user_id;
     } else {
-        header('Location: ./login.php');
+        header('Location: /login.php');
         exit;
     }
 }

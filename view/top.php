@@ -1,5 +1,5 @@
 <div class="parallax">
-	<a href="../chill-control/login.php">
+	<a href="/login">
 		<h2 class="parallax top">Wanna Chill?</h2>
 	</a>
 </div>
@@ -9,7 +9,7 @@
 		<!-- Register screen表示 -->
 		<h3>Register Here<i class="fas fa-cocktail"></i></h3>
 		<div class="register">
-			<form method="POST" action="../chill-control/top_control.php" enctype="multipart/form-data">
+			<form method="POST" action="/top_control" enctype="multipart/form-data">
 				<div class="user">
 					<label>User Name: <br>
 						<input type="text" name="user_name" class="user_info" placeholder="6文字以上の英数字で入力..."
@@ -120,14 +120,14 @@
 		</div>
 		<!-- Registerに成功したらLogin画面に -->
 		<?php if ($success) {
-		    header('Location: ./login_control.php');
+		    header('Location: /login_control');
 		    exit;
 		} ?>
 	</div>
 </div>
 
 <div class="parallax bottom">
-	<a href="../chill-control/login.php">
+	<a href="/login">
 		<h2 class="parallax">Chill Out?</h2>
 	</a>
 	<footer>

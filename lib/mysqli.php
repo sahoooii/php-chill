@@ -21,14 +21,13 @@ function get_db_connect()
     mysqli_set_charset($link, DB_CHARACTER_SET);// 文字コードセット
     return $link;
 }
-
+	
 function get_admin_connect(): array
 {
     $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
     $dotenv->load();
 
     $dbAdminEmail = $_ENV['DB_ADMIN_EMAIL'];
-    $dbAdminPass = $_ENV['DB_ADMIN_PASSWD'];
 
-    return [$dbAdminEmail, $dbAdminPass];
+    return [$dbAdminEmail];
 }

@@ -19,8 +19,8 @@ $admin_id = login_check($link);
 $email = get_user($link, $admin_id)['email'];
 
 // admin user check
-if($email !== $admin[0]) {
-    header('Location: ./login-control.php');
+if ($email !== $admin[0]) {
+    header('Location: /login_control');
     exit;
 }
 
@@ -34,8 +34,11 @@ if ($link) {
             if (isset($_POST['user_id'])) {
                 $user_id = $_POST['user_id'];
             }
+            if (isset($_POST['user_name'])) {
+                $user_name = $_POST['user_name'];
+            }
             if (delete_user_table($link, $user_id)) {
-                $msg[] = 'ID:' . $user_id . 'のUserを削除しました';
+                $msg[] = 'ID:' . $user_id . ' ' . $user_name .'を削除しました';
             } else {
                 $err_msg[] = 'アカウントの削除に失敗しました';
             }

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="<?php echo $stylesheet; ?>">
+		<link rel="icon" href="/favicon.ico" type="image/x-icon">
 
     <!-- Bootstrap Javascript(jQuery含む) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
