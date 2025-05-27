@@ -311,7 +311,7 @@ Here's a summary of the updates made in May 2025.
 | `view/layout.php`                 | Base layout template for rendering pages                                                      |
 | `view/components/bbsNavbar.php`   | Navbar component used in BBS-related pages                                                    |
 | `view/components/navbar.php`      | Global navbar component used across the application                                           |
-| `exsample.env`                    | Template file for required environment variables                                              |
+| `example.env`                    | Template file for required environment variables                                              |
 
 #### 💡 Note: Difference Between \_control.php and .php Files
 
