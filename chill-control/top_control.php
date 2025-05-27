@@ -84,7 +84,7 @@ if ($link) {
             $err_msg['status']= 'ステータスはPrivateかPublicでお願いします';
         }
 
-				// エラーメッセージがなければ、画像処理
+        // エラーメッセージがなければ、画像処理
         if (empty($err_msg)) {
             // image upload
             $upload_result = handle_file_upload(
