@@ -13,7 +13,6 @@ function handle_file_upload($file_key, $save_sub_dir, $img_upload_func, $public_
         $err_msg['img_up'] = '不正なファイルアップロードです';
         return false;
     }
-
     // ファイル拡張子を抜き出して、本来のファイル名→大文字を小文字にする
     $file_ext = strtolower(pathinfo($_FILES[$file_key]['name'], PATHINFO_EXTENSION));
     // 保存ファイル名（タイムスタンプ＋拡張子）
@@ -22,6 +21,7 @@ function handle_file_upload($file_key, $save_sub_dir, $img_upload_func, $public_
     // 実際に保存するサーバー側の絶対パス
     $save_path = __DIR__ . '/../public/uploads/' . $save_sub_dir . '/' . $filename;
     // HTMLやDBで使う相対パス（例: ./uploads/abc.jpg）
+
     $public_path = '/uploads/' . $save_sub_dir . '/' . $filename;
 
     $success = $img_upload_func($tempFile, $file_ext, $save_path, $err_msg);
