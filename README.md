@@ -1,9 +1,11 @@
 # php-chill
 
-![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
-![XAMPP](https://img.shields.io/badge/XAMPP-FB7A24?style=for-the-badge&logo=xampp&logoColor=white)
+## 🛠 Tech Stack
 
+![PHP](https://img.shields.io/badge/PHP@8.0.9-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL@8.0.23-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![XAMPP](https://img.shields.io/badge/XAMPP@8.0.28--0-FB7A24?style=for-the-badge&logo=xampp&logoColor=white)
+<br />
 ![HTML5](https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
@@ -311,7 +313,7 @@ Here's a summary of the updates made in May 2025.
 | `view/layout.php`                 | Base layout template for rendering pages                                                      |
 | `view/components/bbsNavbar.php`   | Navbar component used in BBS-related pages                                                    |
 | `view/components/navbar.php`      | Global navbar component used across the application                                           |
-| `example.env`                    | Template file for required environment variables                                              |
+| `example.env`                     | Template file for required environment variables                                              |
 
 #### 💡 Note: Difference Between \_control.php and .php Files
 
